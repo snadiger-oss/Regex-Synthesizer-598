@@ -1,0 +1,24 @@
+ANTLR Tool version 4.8 used for code generation does not match the current runtime version 4.7.1ANTLR Tool version 4.8 used for code generation does not match the current runtime version 4.7.1line 1:2 token recognition error at: '<fa'
+line 1:5 token recognition error at: 'm'
+line 1:6 token recognition error at: 'i'
+line 1:7 token recognition error at: 'l'
+line 1:8 token recognition error at: 'i'
+line 1:9 token recognition error at: 'es'
+line 1:11 token recognition error at: '='
+line 1:12 token recognition error at: 'nu'
+line 1:14 token recognition error at: 'm'
+line 1:16 token recognition error at: 'm'
+line 1:17 token recognition error at: 'i'
+line 1:18 token recognition error at: 'n='
+line 1:15 mismatched input ',' expecting {CCtype, 'startwith', 'endwith', 'contain', 'optional', 'star', 'repeat', 'repeatatleast', 'repeatrange', 'concat', 'not', 'notcc', 'and', 'or', 'sep', 'sketch', '?', CONST}
+line 1:20 mismatched input '2' expecting {CCtype, 'startwith', 'endwith', 'contain', 'optional', 'star', 'repeat', 'repeatatleast', 'repeatrange', 'concat', 'not', 'notcc', 'and', 'or', 'sep', 'sketch', '?', CONST}
+line 1:22 token recognition error at: 'm'
+line 1:23 token recognition error at: 'ax'
+line 1:25 token recognition error at: '='
+line 1:27 token recognition error at: '>'
+line 1:26 mismatched input '3' expecting {CCtype, 'startwith', 'endwith', 'contain', 'optional', 'star', 'repeat', 'repeatatleast', 'repeatrange', 'concat', 'not', 'notcc', 'and', 'or', 'sep', 'sketch', '?', CONST}
+Exception in thread "main" java.lang.NullPointerException: Cannot invoke "MRGA.Nodes.Node.equals(MRGA.Nodes.Node)" because "nd2" is null
+	at MRGA.sketchC.Sketch.eliminateDuplicates(Sketch.java:88)
+	at MRGA.sketchC.Partial.<init>(Partial.java:76)
+	at MRGA.Synthesizer.incrementalSynthesis(Synthesizer.java:542)
+	at MRGA.Main.main(Main.java:204)

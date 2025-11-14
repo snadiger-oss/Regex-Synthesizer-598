@@ -1,0 +1,4 @@
+"12345",+
+
+repeatatleast(or(<A>,or(<B>,<C>)),1)
+READY-0
