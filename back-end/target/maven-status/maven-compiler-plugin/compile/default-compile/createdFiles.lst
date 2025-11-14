@@ -8,8 +8,8 @@ edu/harvard/seas/synthesis/Regex.class
 edu/harvard/seas/synthesis/logging/SynthesisLogger.class
 edu/harvard/seas/synthesis/Example.class
 edu/harvard/seas/synthesis/ExplanationGenerator.class
-edu/harvard/seas/synthesis/HTTPServer$1.class
 edu/harvard/seas/synthesis/logging/SynthesisLogger$1.class
+edu/harvard/seas/synthesis/HTTPServer$1.class
 edu/harvard/seas/synthesis/ResnaxRunner.class
 edu/harvard/seas/synthesis/ServerCommandLineParser.class
 edu/harvard/seas/synthesis/CoverageDrivenInputGenerator$1.class

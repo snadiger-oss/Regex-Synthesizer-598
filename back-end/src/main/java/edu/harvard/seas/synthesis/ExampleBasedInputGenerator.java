@@ -48,6 +48,7 @@ public class ExampleBasedInputGenerator {
 		a.reduce();
 		
 		State p = a.getInitialState();
+		System.out.println("Generating examples for input: " + example);
 		for (int i = 0; i < example.length(); i++) {
 			State q = p.step(example.charAt(i));
 			

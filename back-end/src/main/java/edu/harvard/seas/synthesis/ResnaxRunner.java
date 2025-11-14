@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
@@ -74,6 +75,14 @@ public class ResnaxRunner {
 		 + File.pathSeparator + resnax_path + File.separator + "libz3java.dylib"
 		 + File.pathSeparator + resnax_path + File.separator + "libz3.dylib"
 		 + File.pathSeparator + resnax_path + File.separator + "libz3java.so";
+
+		System.out.println("Class variables: ");
+		System.out.println("z3_lib_path: " + z3_lib_path);
+		System.out.println("java_class_path: " + java_class_path);
+		System.out.println("example_file_path: " + example_file_path);
+		System.out.println("program_file_path: " + program_file_path);
+		System.out.println("log_dir_path: " + log_dir_path);
+		System.out.println("temp_dir_path: " + temp_dir_path);
 	}
 	
 	public static ResnaxRunner getInstance() {
@@ -85,6 +94,7 @@ public class ResnaxRunner {
 	}
 	
 	public static void reset() {
+		System.out.println("Resetting!");
 		if(single_instance == null) {
 			return;
 		}
@@ -126,6 +136,8 @@ public class ResnaxRunner {
 	public List<String> run(Example[] examples, Regex[] regexes) {
 		// reset the previous mapping between DSL regexes and automaton regexes
 		dsl_to_automaton_regex.clear();
+		System.out.println("Running Resnax Synthesis...");
+		System.out.println("Examples: " + examples);
 		
 		// write the input examples to the example file
 		File f = new File(example_file_path);
@@ -143,6 +155,7 @@ public class ResnaxRunner {
 		
 		// parse the annotations to sketches
 		String sketch = parseAnnotationToSketch(examples, regexes);
+		System.out.println("Generated Sketch: " + sketch);
 		
 		HashSet<String> exclude_set = new HashSet<String>();
 		for(Regex regex : regexes) {
@@ -163,7 +176,8 @@ public class ResnaxRunner {
 		} else {
 			excludes = ",";
 		}
-		
+		System.out.println("Excludes set: " + excludes);
+
 		boolean restart;
 		HashSet<String> copy = new HashSet<String>(prev_examples);
 		copy.removeAll(example_set);
@@ -187,6 +201,7 @@ public class ResnaxRunner {
 		// set the signal 
 		s += "READY-" + counter;
 		
+		System.out.println("Writing examples to file: " + example_file_path);
 		try {
 			// write the examples to the example file
 			FileUtils.write(f, s, Charset.defaultCharset(), false);
@@ -202,6 +217,7 @@ public class ResnaxRunner {
 			e1.printStackTrace();
 		}
 		
+		System.out.println("Reading synthesized programs from file: " + program_file_path);
 		// get the new synthesized programs
 		ArrayList<String> new_regexes = new ArrayList<String>();
 		try {
@@ -234,6 +250,7 @@ public class ResnaxRunner {
     	prev_excludes = excludes;
     	prev_examples = example_set;
     	counter++;
+		System.out.println("New regexes: " + new_regexes);
 		
 		return new_regexes;
 	}
@@ -294,6 +311,7 @@ public class ResnaxRunner {
 					",",
 					",",
 					","};
+			System.out.println("Invoking Resnax");
 	        ProcessBuilder processBuilder = new ProcessBuilder(cmd);
 	        processBuilder.redirectError(fError);
 	        processBuilder.redirectOutput(fOutput);
@@ -343,8 +361,21 @@ public class ResnaxRunner {
 		HashSet<String> not_matches = new HashSet<String>();
 		HashSet<String> char_families = new HashSet<String>();
 		HashSet<String> includes = new HashSet<String>();
+		String sketch_includes = "";
+		String sketch = "?";
+		HashSet<String> single_chars = new HashSet<String>();
+		HashSet<String> sequences = new HashSet<String>();
+
+		// collect length range annotations
+		// HashSet<String> length_ranges = new HashSet<String>();
 		
 		for(Example example : examples) {
+			System.out.println("Processing example: " + example);
+			System.out.println(" exact: " +  String.join(",", example.exact));
+			System.out.println(" unmatch: " +  String.join(",", example.unmatch));
+			System.out.println(" generalize: " +  String.join(",", example.generalize));
+			System.out.println(" output: " +  example.output);
+
 			if(example.output) {
 				// only consider exact match in positive examples
 				for(String s : example.exact) {
@@ -354,25 +385,172 @@ public class ResnaxRunner {
 			
 			if(!example.output) {
 				// only consider unmatch in negative examples
-				for(String s : example.unmatch) {
-					not_matches.add(s);
+				for(String match_s : example.unmatch) {
+					int bgn_minLength = match_s.indexOf("min=");
+					int bgn_maxLength = match_s.indexOf("max=");
+					String match = "";
+					int minLength = -1;
+					int maxLength = -1;
+					if (bgn_maxLength == -1) {
+						if (bgn_minLength == -1) {
+							match = match_s;
+						}
+						else {
+							match = match_s.substring(0, bgn_minLength-3);
+							minLength = Integer.parseInt(match_s.substring(bgn_minLength + 4));
+						}
+					}
+					else {
+						if (bgn_minLength == -1) {
+							match = match_s.substring(0, bgn_maxLength-3);
+							maxLength = Integer.parseInt(match_s.substring(bgn_maxLength + 4));
+						}
+						else {
+							match = match_s.substring(0, bgn_minLength-3);
+							System.out.println(" Extracted match: " + match);
+							System.out.println(" minLength str: " + match_s.substring(bgn_minLength + 4, bgn_maxLength));
+							System.out.println(" maxLength str: " + match_s.substring(bgn_maxLength + 4));
+							minLength = Integer.parseInt(match_s.substring(bgn_minLength + 4, bgn_maxLength-1));
+							maxLength = Integer.parseInt(match_s.substring(bgn_maxLength + 4));
+						}
+					}
+					System.out.println(" Exact match: " + match + ", minLength: " + minLength + ", maxLength: " + maxLength);
+					if(match.length() == 1) {
+						// a single character
+						if (minLength != -1 || maxLength != -1) {
+							// add length constraints
+							if (minLength != -1 && maxLength != -1) {
+								// both min and max length are specified
+								sketch_includes += ("not(repeatrange(<" + match + ">,"
+										+ minLength + "," + maxLength + ")),");
+							} else if (minLength != -1) {
+								// only min length is specified
+								sketch_includes += ("not(repeatatleast(<" + match + ">,"
+										+ minLength + ")),");
+							} else if (maxLength != -1) {
+								// only max length is specified
+								sketch_includes += ("not(repeatatmost(<" + match + ">,"
+										+ maxLength + ")),");
+
+							}
+						}
+					} else {
+						if(match.equals("--")) {
+							// this is a trick
+							// handle -- as a sequence
+							sequences.add("concat(<->,<->)");
+							continue;
+						}
+						char[] chars_non = match.toCharArray();
+						Set<Character> uniq = new HashSet<>();
+						for (char c : chars_non) uniq.add(c);
+						char[] chars = new char[uniq.size()];
+						int idx = 0;
+						for (char c : uniq) {
+							chars[idx++] = c;
+						}
+						String or_stmt = "or(";
+						for (int i = 0; i < chars.length - 2; i++) {
+							or_stmt += "<" + chars[i] + ">,or(";
+						}
+						or_stmt += "<" + chars[chars.length - 2] + ">,<" + chars[chars.length - 1] + ">";
+						for (int i = 0; i < chars.length - 1; i++) {
+							or_stmt += ")";
+						}
+						System.out.println(" Generated or statement for exact match: " + or_stmt);
+						if (minLength != -1 && maxLength != -1) {
+							// both min and max length are specified
+							sketch_includes += ("not(repeatrange(" + or_stmt + ","
+									+ minLength + "," + maxLength + ")),");
+						} else if (minLength != -1) {
+							// only min length is specified
+							sketch_includes += ("not(repeatatleast(" + or_stmt + ","
+									+ minLength + ")),");
+						} else if (maxLength != -1) {
+							// only max length is specified
+							sketch_includes += ("not(repeatatmost(" + or_stmt + ","
+									+ maxLength + ")),");
+
+						}
+					}
 				}
 			}
 			
 			for(String s : example.generalize) {
-				String char_family = s.substring(s.lastIndexOf("@@@") + 3);
+				// String char_family = s.substring(s.lastIndexOf("@@@") + 3);
+				// Integer minLength = Integer.parseInt(s.substring(s.indexOf("min,") + 4));
+				int bgn_char_family = s.indexOf("@@@families=");
+				int bgn_minLength = s.indexOf("min=");
+				int bgn_maxLength = s.indexOf("max=");
+				String char_family = "";
+				int minLength = -1;
+				int maxLength = -1;
+				System.out.println(" Generalize annotation: " + s + ", minLength: " + bgn_minLength + ", maxLength: " + bgn_maxLength);
+				if (bgn_maxLength == -1) {
+					if (bgn_minLength == -1) {
+						char_family = s.substring(bgn_char_family + 12);
+					}
+					else {
+						char_family = s.substring(bgn_char_family + 12, bgn_minLength-1);
+						minLength = Integer.parseInt(s.substring(bgn_minLength + 4));
+					}
+				}
+				else {
+					if (bgn_minLength == -1) {
+						char_family = s.substring(bgn_char_family + 12, bgn_maxLength-1);
+						maxLength = Integer.parseInt(s.substring(bgn_maxLength + 4));
+					}
+					else {
+						char_family = s.substring(bgn_char_family + 12, bgn_minLength-1);
+						System.out.println(" Extracted char family: " + char_family);
+						System.out.println(" minLength str: " + s.substring(bgn_minLength + 4, bgn_maxLength));
+						System.out.println(" maxLength str: " + s.substring(bgn_maxLength + 4));
+						minLength = Integer.parseInt(s.substring(bgn_minLength + 4, bgn_maxLength-1));
+						maxLength = Integer.parseInt(s.substring(bgn_maxLength + 4));
+					}
+				}
+				System.out.println(" Generalize char family: " + char_family);
 				if(char_family.equals("any")) {
 					// handle it outside
 					continue;
 				}
 				
 				char_families.add('<' + char_family + '>');
+				if (minLength != -1 && maxLength != -1) {
+					// both min and max length are specified
+					if (!example.output) {
+						sketch_includes += ("not(repeatrange(<" + char_family + ">,"
+								+ minLength + "," + maxLength + ")),");
+					} else {
+						sketch_includes += ("repeatrange(<" + char_family + ">,"
+								+ minLength + "," + maxLength + "),");
+					}
+				} else if (minLength != -1) {
+					// only min length is specified
+					if (!example.output) {
+						sketch_includes += ("not(repeatatleast(<" + char_family + ">,"
+								+ minLength + ")),");
+					} else {
+						sketch_includes += ("repeatatleast(<" + char_family + ">,"
+								+ minLength + "),");
+					}
+				} else if (maxLength != -1) {
+					// only max length is specified
+					if (!example.output) {
+						sketch_includes += ("not(repeatatmost(<" + char_family + ">,"
+								+ maxLength + ")),");
+					} else {
+						sketch_includes += ("repeatatmost(<" + char_family + ">,"
+								+ maxLength + "),");
+					}
+				}
 				
 				// comment out this heuristic, seems not so helpful				
-//				if(!example.output) {
-//					char_families.add("not(contain(<" + char_family + ">))");
-//				}
+				// if(!example.output) {
+				// 	char_families.add("not(contain(<" + char_family + ">))");
+				// }
 			}
+			
 		}
 		
 		for(Regex regex : regexes) {
@@ -387,15 +565,57 @@ public class ResnaxRunner {
 			}
 		}
 		
-		String sketch = "?";
-		String sketch_includes = "";
-		HashSet<String> single_chars = new HashSet<String>();
-		HashSet<String> sequences = new HashSet<String>();
 		
-		for(String match : exact_matches) {
+		
+		for(String match_s : exact_matches) {
+			int bgn_minLength = match_s.indexOf("min=");
+			int bgn_maxLength = match_s.indexOf("max=");
+			String match = "";
+			int minLength = -1;
+			int maxLength = -1;
+			if (bgn_maxLength == -1) {
+				if (bgn_minLength == -1) {
+					match = match_s;
+				}
+				else {
+					match = match_s.substring(0, bgn_minLength-3);
+					minLength = Integer.parseInt(match_s.substring(bgn_minLength + 4));
+				}
+			}
+			else {
+				if (bgn_minLength == -1) {
+					match = match_s.substring(0, bgn_maxLength-3);
+					maxLength = Integer.parseInt(match_s.substring(bgn_maxLength + 4));
+				}
+				else {
+					match = match_s.substring(0, bgn_minLength-3);
+					System.out.println(" Extracted match: " + match);
+					System.out.println(" minLength str: " + match_s.substring(bgn_minLength + 4, bgn_maxLength));
+					System.out.println(" maxLength str: " + match_s.substring(bgn_maxLength + 4));
+					minLength = Integer.parseInt(match_s.substring(bgn_minLength + 4, bgn_maxLength-1));
+					maxLength = Integer.parseInt(match_s.substring(bgn_maxLength + 4));
+				}
+			}
+			System.out.println(" Exact match: " + match + ", minLength: " + minLength + ", maxLength: " + maxLength);
 			if(match.length() == 1) {
 				// a single character
 				single_chars.add("<" + match + ">");
+				if (minLength != -1 || maxLength != -1) {
+					// add length constraints
+					if (minLength != -1 && maxLength != -1) {
+						// both min and max length are specified
+						sketch_includes += ("repeatrange(<" + match + ">,"
+								+ minLength + "," + maxLength + "),");
+					} else if (minLength != -1) {
+						// only min length is specified
+						sketch_includes += ("repeatatleast(<" + match + ">,"
+								+ minLength + "),");
+					} else if (maxLength != -1) {
+						// only max length is specified
+						sketch_includes += ("repeatatmost(<" + match + ">,"
+								+ maxLength + "),");
+					}
+				}
 			} else {
 				if(match.equals("--")) {
 					// this is a trick
@@ -403,7 +623,14 @@ public class ResnaxRunner {
 					sequences.add("concat(<->,<->)");
 					continue;
 				}
-				char[] chars = match.toCharArray();
+				char[] chars_non = match.toCharArray();
+				Set<Character> uniq = new HashSet<>();
+				for (char c : chars_non) uniq.add(c);
+				char[] chars = new char[uniq.size()];
+				int idx = 0;
+				for (char c : uniq) {
+					chars[idx++] = c;
+				}
 				// Option 1: treat multiple characters as a sequence
 				String s = "";
 				for(int i = 0; i < chars.length - 1; i++) {
@@ -417,6 +644,28 @@ public class ResnaxRunner {
 				// Option 2: treat multiple characters separately, not as a sequence
 				for(char c : chars) {
 					single_chars.add("<" + c + ">");
+				}
+				String or_stmt = "or(";
+				for (int i = 0; i < chars.length - 2; i++) {
+					or_stmt += "<" + chars[i] + ">,or(";
+				}
+				or_stmt += "<" + chars[chars.length - 2] + ">,<" + chars[chars.length - 1] + ">";
+				for (int i = 0; i < chars.length - 1; i++) {
+					or_stmt += ")";
+				}
+				System.out.println(" Generated or statement for exact match: " + or_stmt);
+				if (minLength != -1 && maxLength != -1) {
+					// both min and max length are specified
+					sketch_includes += ("repeatrange(" + or_stmt + ","
+							+ minLength + "," + maxLength + "),");
+				} else if (minLength != -1) {
+					// only min length is specified
+					sketch_includes += ("repeatatleast(" + or_stmt + ","
+							+ minLength + "),");
+				} else if (maxLength != -1) {
+					// only max length is specified
+					sketch_includes += ("repeatatmost(" + or_stmt + ","
+							+ maxLength + "),");
 				}
 			}
 		}
@@ -538,7 +787,7 @@ public class ResnaxRunner {
 			}
 			sketch += "}";
 		}
-		
+		System.out.println("Final sketch: " + sketch);
 		return sketch;
 	}
 }

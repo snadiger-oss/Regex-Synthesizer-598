@@ -55,6 +55,7 @@ public class SynthesisServerHandler {
 		System.out.println("Message: ");
 		System.out.println(message);
 		SynthesisLogger.getSynthesisLogger().logString(message);
+		System.out.println("Does start with Synthesize Regexes: " + message.startsWith("Synthesize Regexes:"));
 
 		if(message.equals("Reset") || message.equals("Window closed")) {
 			// the synthesis task has been changed
@@ -65,7 +66,8 @@ public class SynthesisServerHandler {
 			message = message.substring("Synthesize Regexes: ".length());
 			String s1 = message.split("\n")[0];
 			String s2 = message.split("\n")[1];
-			// Parse the json message]
+			System.out.println("S1: " + s1);
+			// Parse the json message
 			ObjectMapper mapper = new ObjectMapper();
 			try {
 				Example[] examples = mapper.readValue(s1, Example[].class);

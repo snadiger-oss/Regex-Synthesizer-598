@@ -268,7 +268,7 @@ const socketCloseListener = (event) => {
         console.error('Disconnected.');
     }
     // socket = new WebSocket('ws://3.236.11.113:8070/');
-    socket = new WebSocket('ws://127.0.0.1:8080/');
+    socket = new WebSocket('ws://localhost:8080/');
     socket.addEventListener('open', socketOpenListener);
     socket.addEventListener('message', socketMessageListener);
     socket.addEventListener('close', socketCloseListener);
@@ -305,34 +305,90 @@ function synthesize() {
         
         if(input.children('.must-have').length > 0 && output.text() == 'check') {
             // marked as a literal on a positive example
+            let added = false;
             input.children('.must-have').each(function() {
-                examples += '"' + escapeJson($(this).text()) + '", ';
+                var text = $(this).text().trim();
+                var gen = generalizations[text];
+                
+                // Check if it has repeat constraints
+                if (gen && (gen.minRepeat !== null || gen.maxRepeat !== null)) {
+                    let parts = [];
+                    
+                    // min
+                    if (gen.minRepeat !== null && gen.minRepeat !== undefined) {
+                        parts.push("min=" + gen.minRepeat);
+                    }
+                    
+                    // max
+                    if (gen.maxRepeat !== null && gen.maxRepeat !== undefined) {
+                        parts.push("max=" + gen.maxRepeat);
+                    }
+                    
+                    let genString = parts.length > 0 ? parts.join(",") : "NONE";
+                    examples += `"${escapeJson(text)}@@@${genString}", `;
+                } else {
+                    // No repeat constraints, just add the text
+                    examples += '"' + escapeJson(text) + '", ';
+                }
+                added = true;
             });
-            examples = examples.substring(0, examples.length - 2);
+            if (added) {
+                examples = examples.substring(0, examples.length - 2);
+            }
         } 
         examples += '], "unmatch" : [';
 
         if(input.children('.must-have').length > 0 && output.text() == 'close') {
+            // marked as a literal on a negative example
+            let added = false;
             input.children('.must-have').each(function() {
-                examples += '"' + escapeJson($(this).text()) + '", ';
+                var text = $(this).text().trim();
+                var gen = generalizations[text];
+                
+                // Check if it has repeat constraints
+                if (gen && (gen.minRepeat !== null || gen.maxRepeat !== null)) {
+                    let parts = [];
+                    
+                    // min
+                    if (gen.minRepeat !== null && gen.minRepeat !== undefined) {
+                        parts.push("min=" + gen.minRepeat);
+                    }
+                    
+                    // max
+                    if (gen.maxRepeat !== null && gen.maxRepeat !== undefined) {
+                        parts.push("max=" + gen.maxRepeat);
+                    }
+                    
+                    let genString = parts.length > 0 ? parts.join(",") : "NONE";
+                    examples += `"${escapeJson(text)}@@@${genString}", `;
+                } else {
+                    // No repeat constraints, just add the text
+                    examples += '"' + escapeJson(text) + '", ';
+                }
+                added = true;
             });
-            examples = examples.substring(0, examples.length - 2);
+            if (added) {
+                examples = examples.substring(0, examples.length - 2);
+            }
         }
         examples += '], "generalize" : [';
 
+        if (input.children('.char-family').length > 0) {
 
-
-        if (input.children('.must-have').length > 0 && output.text() == 'check') { 
             let added = false;
-            input.children('.must-have').each(function () {
-                var text = $(this).text().trim();
-                var gen = generalizations[text]; 
 
-                if (gen && (gen.minRepeat !== null || gen.maxRepeat !== null)) {
+            input.children('.char-family').each(function () {
+
+                var text = $(this).text().trim();
+                var gen = generalizations[text];
+
+                let genString = "NONE";
+
+                if (gen) {
                     let parts = [];
-                    let genString = "NONE";
-                    
-                    if (gen.families && gen.families.length > 0) { 
+
+                    // families
+                    if (gen.families && gen.families.length > 0) {
                         parts.push("families=" + gen.families.join('|'));
                     }
 
@@ -349,60 +405,16 @@ function synthesize() {
                     if (parts.length > 0) {
                         genString = parts.join(",");
                     }
-                    
-                    examples += `"${escapeJson(text)}@@@${genString}", `;
-                    added = true;
                 }
+
+                examples += `"${escapeJson(text)}@@@${genString}", `;
+                added = true;
             });
-            
-            if (added) { 
-                examples = examples.substring(0, examples.length - 2); 
+
+            if (added) {
+                examples = examples.substring(0, examples.length - 2); // remove last ", "
             }
         }
-
-if (input.children('.char-family').length > 0 && output.text() == 'check') {
-
-    let added = false;
-
-    input.children('.char-family').each(function () {
-
-        var text = $(this).text().trim();
-        var gen = generalizations[text];
-
-        let genString = "NONE";
-
-        if (gen) {
-            let parts = [];
-
-            // families
-            if (gen.families && gen.families.length > 0) {
-                parts.push("families=" + gen.families.join('|'));
-            }
-
-            // min
-            if (gen.minRepeat !== null && gen.minRepeat !== undefined) {
-                parts.push("min=" + gen.minRepeat);
-            }
-
-            // max
-            if (gen.maxRepeat !== null && gen.maxRepeat !== undefined) {
-                parts.push("max=" + gen.maxRepeat);
-            }
-
-            if (parts.length > 0) {
-                genString = parts.join(",");
-            }
-        }
-
-        examples += `"${escapeJson(text)}@@@${genString}", `;
-        added = true;
-    });
-
-    if (added) {
-        examples = examples.substring(0, examples.length - 2); // remove last ", "
-    }
-}
-
 
         examples += '], ';
 
@@ -473,11 +485,12 @@ if (input.children('.char-family').length > 0 && output.text() == 'check') {
     }
     regexes += "]";
     console.log("Examples:", examples)
-   socket.send(JSON.stringify({
-    msg: "Synthesize Regexes",
-    examples: JSON.parse(examples),
-    regexes: JSON.parse(regexes)
-}));
+    socket.send("Synthesize Regexes: " + examples + "\n" + regexes)
+//    socket.send(JSON.stringify({
+//     msg: "Synthesize Regexes",
+//     examples: JSON.parse(examples),
+//     regexes: JSON.parse(regexes)
+// }));
 
 
     // set the synthesis progress bar
