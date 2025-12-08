@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 # Interactive Program Synthesis by Augmented Examples
 
@@ -69,3 +70,6 @@ The underlying synthesizer in our tool depends on a theorem prover, [Z3](https:/
       ```
 
       To test if Z3 is successfully installed, please run `z3` in command line.
+=======
+# Regex-Synthesizer-598
+>>>>>>> 00e61ce753dc11f2e9b03173364e540d6041ef4d

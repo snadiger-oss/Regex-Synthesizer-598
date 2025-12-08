@@ -1126,46 +1126,118 @@ function getOrdinalNum(i) {
 var generalizations = {};
 
 var generalized_chars; 
+// A helper function to check if the highlighted text contains ONLY characters
+// that belong to the selected character family.
+function isGeneralizationValid(highlightedText, selectedFamilies) {
+    if (selectedFamilies.length === 0) {
+        // No family selected is always valid, as it only applies repeat constraints.
+        return true; 
+    }
+
+    // 1. Convert the highlighted text to its raw, unescaped form
+    const text = unescapeHtml(highlightedText);
+
+    // 2. Define the character sets based on your checkbox IDs (this is where the logic lives)
+    const charSets = {
+        'num':        /[0-9]/,
+        'num1-9':     /[1-9]/,
+        'low':        /[a-z]/,
+        'cap':        /[A-Z]/,
+        'let':        /[a-zA-Z]/,
+        'alphanum':   /[a-zA-Z0-9]/,
+        'any':        /./  // Always matches, making it effectively always valid
+    };
+
+    // 3. Perform the validation check
+    for (let char of text) {
+        let charMatchesAnySelectedFamily = false;
+
+        for (let familyId of selectedFamilies) {
+            const regex = charSets[familyId];
+
+            if (regex && char.match(regex)) {
+                // The current character matches at least one selected family
+                charMatchesAnySelectedFamily = true;
+                break; // Stop checking other families for this character
+            }
+        }
+
+        if (!charMatchesAnySelectedFamily) {
+            // Found a character in the selection that doesn't match ANY chosen family.
+            return false;
+        }
+    }
+
+    // If we checked all characters and all matched at least one selected family:
+    return true;
+}
+
+
 
 function selectCharFamily() {
+
     const highlightedText = generalized_chars;
 
     if (!highlightedText) {
         $("#charFamilyModal").modal("hide");
         return;
     }
+    
+
+    const markedLength = unescapeHtml(highlightedText).length; 
+
 
     let selectedFamilies = [];
     $("#generalCheckboxContainer input[type='checkbox']:checked").each(function () {
         selectedFamilies.push(this.id);
     });
 
+    if (!isGeneralizationValid(highlightedText, selectedFamilies)) {
+        alert("Synthesizer Validation Error: The selected character family/categories do not match the characters you highlighted ('" + unescapeHtml(highlightedText) + "'). Please choose different options or cancel.");
+        return; 
+    }
+
+
     let min = $("#generalRepeatContainer").find("#minRepeat").val();
     let max = $("#generalRepeatContainer").find("#maxRepeat").val();
-
 
     min = min ? parseInt(min) : null;
     max = max ? parseInt(max) : null;
     
+
     if (min !== null && max !== null && min > max) {
-         alert("Min repeat value cannot be greater than Max repeat value.");
-         return; 
+         alert("Synthesizer Validation Error: Min repeat value (" + min + ") cannot be greater than Max repeat value (" + max + ").");
+         return;
     }
+
+    if (min !== null && markedLength < min) {
+         alert("Synthesizer Contradiction Error: The minimum repeat value (" + min + ") is greater than the length of the marked text (" + markedLength + "). This violates the current positive example.");
+         return;
+    }
+    
+    if(max!==null && markedLength > max) {
+        alert("Synthesizer Contradiction Error: The maximum repeat value (" + max + ") is less than the length of the marked text (" + markedLength + "). This violates the current positive example.");
+         return;
+    }
+
+    if (selectedFamilies.length === 0 && (min !== null || max !== null)) {
+        alert("Synthesizer Validation Error: If you are setting a repeat range (min/max), you must also select at least one character family.");
+        return;
+    }
+
 
     generalizations[unescapeHtml(highlightedText)] = {
         families: selectedFamilies,
         minRepeat: min, 
-        maxRepeat: max  
+        maxRepeat: max 
     };
-
-
-    generalized_chars = null; 
-
-    $("#charFamilyModal").modal("hide");
     
+    generalized_chars = null; 
+    $("#charFamilyModal").modal("hide");
 }
 
-// inject repeat options into modals
+
+
 function openLiteralModal() {
     const repeatHTML = $("#repeatOptions").html();
     $("#literalRepeatContainer").html(repeatHTML);
@@ -1174,42 +1246,19 @@ function openLiteralModal() {
 function openGeneralModal() {
     const repeatHTML = $("#repeatOptions").html();
     
-    //  Clears previously checked checkboxes
+
     $("#generalCheckboxContainer input[type='checkbox']").prop('checked', false); 
     
-    // Clears and resets the repeat options HTML (which usually clears min/max input values)
+
     $("#generalRepeatContainer").html(repeatHTML); 
     $("#charFamilyModal").modal("show");
 }
 
 
 
-
-
-// function selectCharFamily() {
-//     if(typeof generalized_chars != 'undefined' && generalized_chars != null) {
-//         // get user selection
-//         $('div#charFamilies input').each(function() {
-//             var checkbox = $(this);
-//             if(checkbox.is(':checked')) {
-//                 var id = checkbox.attr('id');
-//                 generalizations[generalized_chars] = id;
-//                 // uncheck the box otherwise it will still be checked the next time users open it
-//                 checkbox.prop( "checked", false );
-//             }
-//         });
-//     }
-
-//     // dismiss the modal
-//     $('#charFamilyModal').modal('hide');
-
-//     // reset 
-//     generalized_chars = null;
-// }
-
 function cancelCharFamily() {
     if(typeof generalized_chars != 'undefined' && generalized_chars != null) {
-        // undo the highlight
+
         $('span.char-family').each(function() {
             var text = escapeHtml($(this).text());
             if(text == generalized_chars) {
@@ -1218,10 +1267,10 @@ function cancelCharFamily() {
         });
     } 
 
-    // dismiss the modal
+
     $('#charFamilyModal').modal('hide');
 
-    // reset 
+
     generalized_chars = null;
 }
 
@@ -1280,135 +1329,40 @@ function submitLiteral() {
         $("#literalModal").modal("hide");
         return;
     }
+
+    const unescapedText = unescapeHtml(highlightedText); 
+    const literalLength = unescapedText.length;
+    
     let min = $("#literalRepeatContainer").find("#minRepeat").val();
     let max = $("#literalRepeatContainer").find("#maxRepeat").val();
 
     min = min ? parseInt(min) : null;
     max = max ? parseInt(max) : null;
 
+
     if (min !== null && max !== null && min > max) {
-         alert("Min repeat value cannot be greater than Max repeat value.");
+         alert("Synthesizer Validation Error: Min repeat value (" + min + ") cannot be greater than Max repeat value (" + max + ").");
          return; 
     }
+    
 
-    generalizations[unescapeHtml(highlightedText)] = {
-        families: [],           // Empty for literal match
-        minRepeat: min,         // Key expected by synthesize()
-        maxRepeat: max          // Key expected by synthesize()
+    if (min !== null && literalLength < min) {
+        alert(`Synthesizer Contradiction Error: The minimum repeat value (${min}) is greater than the length of the marked literal text ('${unescapedText}', length ${literalLength}). This violates the current positive example.`);
+        return;
+    }
+
+    if (max !== null && literalLength > max) {
+        alert(`Synthesizer Contradiction Error: The maximum repeat value (${max}) is less than the length of the marked literal text ('${unescapedText}', length ${literalLength}). This violates the current positive example.`);
+        return;
+    }
+
+    generalizations[unescapedText] = {
+        families: [],
+        minRepeat: min, 
+        maxRepeat: max
     };
     
     generalized_chars = null;
     $("#literalModal").modal("hide");
 }
 
-/* 
-function showMore() {
-    var rows = $("#synthetic tr");
-
-    var flag = false;
-    rows.each(function(){
-        var row = $(this);
-        if(row.has('th').length == 1) {
-            // new cluster
-            flag = true;
-        } else {
-            if(flag) {
-                var attr = row.attr('style');
-                if (typeof attr !== typeof undefined && attr !== false) {
-                    row.removeAttr('style');
-                    flag = false;
-                }
-            }
-        }
-    });
-}
-
-function showLess() {
-    var rows = $("#synthetic tr");
-
-    var flag = false;
-    var hasHidden = false;
-    rows.each(function(){
-        var row = $(this);
-
-        if(row.has('th').length == 1) {
-            // new cluster
-            flag = true;
-
-            if(!hasHidden) {
-                // no hidden examples in the previous cluster
-                var prev_tr = row.prev('tr');
-                if(prev_tr.length != 0 && prev_tr.has('th').length == 0 && prev_tr.has('td.icon').length > 0) {
-                    // make sure it is not a cluster header
-                    prev_tr.attr('style', 'display:none');
-                }
-            }
-
-            // reset
-            hasHidden = false;
-        } else {
-            if(flag) {
-                var attr = row.attr('style');
-                if (typeof attr !== typeof undefined && attr !== false) {
-                    hasHidden = true;
-                    // find the previous visible sibling
-                    var prev_tr = row.prev('tr');
-                    if(prev_tr.length != 0 && prev_tr.has('th').length == 0 && prev_tr.has('td.icon').length > 0) {
-                        // make sure it is not a cluster header
-                        prev_tr.attr('style', 'display:none');
-                        flag = false;
-                    }
-                }
-            }
-        }
-    });
-}
-
-var allDisplayed = false;
-function showAll() {
-    var rows = $("#synthetic tr");
-
-    var num_to_display = 5;
-    if(sel_regex.length > 1) {
-        num_to_display ++;
-    }
-
-    if(!allDisplayed) {
-        // show all hidden examples
-        rows.each(function() {
-            var row = $(this);
-            if(row.has('th').length == 0) {
-                // not a cluster header
-                var attr = row.attr('style');
-                if (typeof attr !== typeof undefined && attr !== false) {
-                    row.removeAttr('style');
-                }
-            }
-        });
-
-        allDisplayed = true;
-    } else {
-        // return to the default display
-        var count = 0;
-        rows.each(function(){
-            var row = $(this);
-
-            if(row.has('th').length == 1) {
-                // new cluster
-                count = 0;
-            } else {
-                if(count < num_to_display) {                       
-                    count++;
-                } else {
-                    var attr = row.attr('style');
-                    if (typeof attr == typeof undefined || attr == false) {
-                        row.attr('style', 'display:none');
-                    }
-                }
-            }
-        });
-
-        allDisplayed = false;
-    }
-}
-*/

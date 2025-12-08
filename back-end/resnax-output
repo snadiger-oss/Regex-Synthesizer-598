@@ -1,0 +1,18 @@
+arg0:0
+arg1:input
+arg2:resnax_log/
+arg3:?{<families=num,min=2,max=3>}
+arg4:1
+arg5:2
+arg6:0
+arg7:resnax_temp/
+arg8:5
+arg9:,
+arg10:input
+arg11:program
+arg12:60000
+arg13:,
+arg14:,
+arg15:,
+resnax_enumerate/ already exists --> delete directory contents
+Start inc syn
