@@ -1,0 +1,8 @@
+"ab_12",+
+"ba_12",-
+"823ab12asfa",+
+"12_ab",-
+"ab___54pwe",+
+
+repeatatleast(or(<A>,or(<B>,<C>)),1)
+READY-0
