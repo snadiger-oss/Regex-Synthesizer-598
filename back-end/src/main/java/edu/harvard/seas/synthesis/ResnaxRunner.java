@@ -431,8 +431,8 @@ public class ResnaxRunner {
 										+ minLength + ")),");
 							} else if (maxLength != -1) {
 								// only max length is specified
-								sketch_includes += ("not(repeatatmost(<" + match + ">,"
-										+ maxLength + ")),");
+								sketch_includes += ("not(repeatrange(<" + match + ">,"
+										+ "0," + maxLength + ")),");
 
 							}
 						}
@@ -470,8 +470,8 @@ public class ResnaxRunner {
 									+ minLength + ")),");
 						} else if (maxLength != -1) {
 							// only max length is specified
-							sketch_includes += ("not(repeatatmost(" + or_stmt + ","
-									+ maxLength + ")),");
+							sketch_includes += ("not(repeatrange(" + or_stmt + ","
+									+ "0," + maxLength + ")),");
 
 						}
 					}
@@ -554,8 +554,8 @@ public class ResnaxRunner {
 						sketch_includes += ("not(repeatatmost(<" + char_family + ">,"
 								+ maxLength + ")),");
 					} else {
-						sketch_includes += ("repeatatmost(<" + char_family + ">,"
-								+ maxLength + "),");
+						sketch_includes += ("repeatatrange(<" + char_family + ">,"
+								+ "0," + maxLength + "),");
 					}
 				}
 				

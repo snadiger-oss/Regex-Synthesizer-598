@@ -1,7 +1,7 @@
 arg0:0
 arg1:input
 arg2:resnax_log/
-arg3:?{<families=num,min=2,max=3>}
+arg3:?{<a>,<num1-9>,concat(,repeatrange(<num>,2,5)),concat(,concat(?, repeatrange(<num>,2,5)))}
 arg4:1
 arg5:2
 arg6:0
