@@ -7,8 +7,10 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
@@ -17,7 +19,7 @@ import edu.harvard.seas.synthesis.Example.TemporalOrdering;
 
 public class ResnaxRunner {
 	public static String resnax_path = "lib";
-	public static int timeout = 60; // 60 seconds
+	public static int timeout = 120; // 60 seconds
 	
 	private String java_class_path;
 	private String z3_lib_path;
@@ -310,6 +312,7 @@ public class ResnaxRunner {
 					example_file_path,
 					program_file_path,
 					timeout * 1000 + "",
+					// 10+ "",
 					",",
 					",",
 					","};
@@ -517,6 +520,7 @@ public class ResnaxRunner {
 					if (order.before.equals(gen_string) || order.after.equals(gen_string)) {
 						// skip those handled in ordering constraints
 						skip = true;
+						System.out.println("Skipping char family: " + char_family);
 						break;
 					}
 				}
@@ -524,10 +528,10 @@ public class ResnaxRunner {
 					continue;
 				}
 				System.out.println(" Generalize char family: " + char_family);
-				if(char_family.equals("any")) {
-					// handle it outside
-					continue;
-				}
+				// if(char_family.equals("any")) {
+				// 	// handle it outside
+				// 	continue;
+				// }
 				
 				char_families.add('<' + char_family + '>');
 				if (minLength != -1 && maxLength != -1) {
@@ -554,7 +558,7 @@ public class ResnaxRunner {
 						sketch_includes += ("not(repeatatmost(<" + char_family + ">,"
 								+ maxLength + ")),");
 					} else {
-						sketch_includes += ("repeatatrange(<" + char_family + ">,"
+						sketch_includes += ("repeatrange(<" + char_family + ">,"
 								+ "0," + maxLength + "),");
 					}
 				}
@@ -645,6 +649,7 @@ public class ResnaxRunner {
 							maxLength = Integer.parseInt(s.substring(bgn_maxLength + 4));
 						}
 					}
+					System.out.println("MATCH: " + match);
 					if (order.before.equals(match)) {
 						// before constraint
 						before_minLength = minLength;
@@ -681,6 +686,7 @@ public class ResnaxRunner {
 					char[] before_chars = order.before.toCharArray();
 					if (before_chars.length == 1) {
 						single_chars.add("<" + before_chars[0] + ">");
+						before_or_stmt = "<" + before_chars[0] + ">";
 					} else {
 						before_or_stmt = "concat(";
 						for (int i = 0; i < before_chars.length - 2; i++) {
@@ -716,8 +722,10 @@ public class ResnaxRunner {
 					}
 				} else {
 					char[] after_chars = order.after.toCharArray();
+					System.out.println(" AFTER CHARS: " + Arrays.toString(after_chars));
 					if (after_chars.length == 1) {
 						single_chars.add("<" + after_chars[0] + ">");
+						after_or_stmt = "<" + after_chars[0] + ">";
 					} else {
 						after_or_stmt = "concat(";
 						for (int i = 0; i < after_chars.length - 2; i++) {
@@ -766,10 +774,10 @@ public class ResnaxRunner {
 					}
 				}
 
-				// construct before statement
+				// construct after statement
 				if (after_minLength == -1 && after_maxLength == -1) {
 					if (afterCharFamily == "") {
-
+						System.out.println(" AFTER OR STMT: " + after_or_stmt);
 						afterStmnt = after_or_stmt;
 					} else {
 						afterStmnt = "<" + afterCharFamily + ">";
@@ -835,6 +843,7 @@ public class ResnaxRunner {
 					if (order.before.equals(match_s) || order.after.equals(match_s)) {
 						// skip those handled in ordering constraints
 						skip = true;
+						System.out.println("Skipping exact match: " + match_s);
 						break;
 					}
 				}
@@ -893,13 +902,14 @@ public class ResnaxRunner {
 					continue;
 				}
 				char[] chars_non = match.toCharArray();
-				Set<Character> uniq = new HashSet<>();
+				Set<Character> uniq = new LinkedHashSet<>();  // Changed from HashSet
 				for (char c : chars_non) uniq.add(c);
 				char[] chars = new char[uniq.size()];
 				int idx = 0;
 				for (char c : uniq) {
 					chars[idx++] = c;
 				}
+
 				// Option 1: treat multiple characters as a sequence
 				String s = "";
 				for(int i = 0; i < chars.length - 1; i++) {

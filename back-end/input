@@ -1,5 +1,7 @@
-"abc123",+
-"123123",+
+"2s8=-@g9=1.com",+
+"g9=1.com",-
+"2s8=-@",-
+"2s8=-#g9=1.com",-
 
 repeatatleast(or(<A>,or(<B>,<C>)),1)
-READY-0
+READY-1

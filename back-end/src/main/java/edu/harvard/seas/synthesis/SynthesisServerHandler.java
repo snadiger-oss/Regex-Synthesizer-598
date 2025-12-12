@@ -97,8 +97,21 @@ public class SynthesisServerHandler {
 		} else if (message.startsWith("Synthesize Regexes:")) {
 			String runID = UUID.randomUUID().toString();
 			message = message.substring("Synthesize Regexes: ".length());
-			String s1 = message.split("\n")[0];
-			String s2 = message.split("\n")[1];
+			String[] parts = message.split("\n");
+			String s1 = parts[0]; // examples
+			String s2 = parts[1]; // regexes
+
+			// Parse timeout if provided, otherwise use default
+			int timeout = ResnaxRunner.timeout; // default
+			if (parts.length > 2) {
+				try {
+					timeout = Integer.parseInt(parts[2].trim());
+					System.out.println("Using custom timeout: " + timeout + " seconds");
+				} catch (NumberFormatException e) {
+					System.out.println("Invalid timeout value, using default: " + timeout);
+				}
+			}
+
 			System.out.println("S1: " + s1);
 			// Parse the json message
 			ObjectMapper mapper = new ObjectMapper();
@@ -107,6 +120,7 @@ public class SynthesisServerHandler {
 				Regex[] regexes = mapper.readValue(s2, Regex[].class);
 
 				SynthesisLogger.getSynthesisLogger().logString(MessageFormat.format("[Run:{0}] Number of examples: {1}", runID, examples.length));
+				SynthesisLogger.getSynthesisLogger().logString(MessageFormat.format("[Run:{0}] Timeout: {1} seconds", runID, timeout));
 				logOperatorAnnotation(runID, regexes);
 				
 				// Log temporal orderings
@@ -124,6 +138,8 @@ public class SynthesisServerHandler {
 				
 				// invoke the resnax runner
 				ResnaxRunner runner = ResnaxRunner.getInstance();
+				runner.timeout = timeout; // Set the custom timeout
+
 				List<String> new_regexes = runner.run(examples, regexes);
 				if(new_regexes.size() > 20) {
 					// only display the first 20 to avoid an error "Frame is too large"

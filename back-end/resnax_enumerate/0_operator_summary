@@ -1,0 +1,11 @@
+endwith: 12
+not: 12
+or: 36
+contain: 12
+star: 11
+repeatatleast: 24
+repeat: 8
+repeatrange: 4
+optional: 12
+concat: 105
+startwith: 12

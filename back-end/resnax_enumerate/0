@@ -1,0 +1,645 @@
+program:  or(<c>,or(<@>,or(<o>,or(<.>,<m>))))
+automaton:  (([c])|((([@])|((([o])|((([\.])|([m]))))))))
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  <c>
+automaton:  [c]
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  <@>
+automaton:  [@]
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  <o>
+automaton:  [o]
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  <.>
+automaton:  [\.]
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  <m>
+automaton:  [m]
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  concat(<.>,concat(<c>,concat(<o>,<m>)))
+automaton:  ([\.])(([c])(([o])([m])))
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  <any>
+automaton:  .
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  repeatatleast(<any>,4)
+automaton:  (.){4,}
+matching indices:  0
+matching examples:
+2s8=-@g9=1.com---------true
+program:  concat(repeatatleast(<any>,5),<@>)
+automaton:  ((.){5,})([@])
+matching indices:  1
+matching examples:
+g9=1.com---------false
+program:  concat(concat(<2>,concat(<s>,concat(<8>,concat(<=>,<->)))),<@>)
+automaton:  (([2])(([s])(([8])(([=])([-])))))([@])
+matching indices:  1
+matching examples:
+g9=1.com---------false
+program:  concat(repeatatleast(<any>,4),concat(<.>,concat(<c>,concat(<o>,<m>))))
+automaton:  ((.){4,})(([\.])(([c])(([o])([m]))))
+matching indices:  0 2
+matching examples:
+2s8=-@g9=1.com---------true
+2s8=-@---------false
+program:  <c>
+automaton:  [c]
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  <@>
+automaton:  [@]
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  <o>
+automaton:  [o]
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  <.>
+automaton:  [\.]
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  <m>
+automaton:  [m]
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  or(<c>,or(<@>,or(<o>,or(<.>,<m>))))
+automaton:  (([c])|((([@])|((([o])|((([\.])|([m]))))))))
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  concat(<.>,concat(<c>,concat(<o>,<m>)))
+automaton:  ([\.])(([c])(([o])([m])))
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  <any>
+automaton:  .
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  repeatatleast(<any>,4)
+automaton:  (.){4,}
+matching indices:  0
+matching examples:
+2s8=-@g9=1.com---------true
+program:  concat(repeatatleast(<any>,5),<@>)
+automaton:  ((.){5,})([@])
+matching indices:  1
+matching examples:
+g9=1.com---------false
+program:  <2>
+automaton:  [2]
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  <s>
+automaton:  [s]
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  <8>
+automaton:  [8]
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  <=>
+automaton:  [=]
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  <->
+automaton:  [-]
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  concat(concat(<2>,concat(<s>,concat(<8>,concat(<=>,<->)))),<@>)
+automaton:  (([2])(([s])(([8])(([=])([-])))))([@])
+matching indices:  1
+matching examples:
+g9=1.com---------false
+program:  concat(repeatatleast(<any>,4),concat(<.>,concat(<c>,concat(<o>,<m>))))
+automaton:  ((.){4,})(([\.])(([c])(([o])([m]))))
+matching indices:  0 2
+matching examples:
+2s8=-@g9=1.com---------true
+2s8=-@---------false
+program:  startwith(or(<c>,or(<@>,or(<o>,or(<.>,<m>)))))
+automaton:  ((([c])|((([@])|((([o])|((([\.])|([m]))))))))).*
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  startwith(<c>)
+automaton:  ([c]).*
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  startwith(<@>)
+automaton:  ([@]).*
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  startwith(<o>)
+automaton:  ([o]).*
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  startwith(<.>)
+automaton:  ([\.]).*
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  startwith(<m>)
+automaton:  ([m]).*
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  startwith(concat(<.>,concat(<c>,concat(<o>,<m>))))
+automaton:  (([\.])(([c])(([o])([m])))).*
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  startwith(<any>)
+automaton:  (.).*
+matching indices:  0
+matching examples:
+2s8=-@g9=1.com---------true
+program:  startwith(repeatatleast(<any>,4))
+automaton:  ((.){4,}).*
+matching indices:  0
+matching examples:
+2s8=-@g9=1.com---------true
+program:  startwith(concat(repeatatleast(<any>,5),<@>))
+automaton:  (((.){5,})([@])).*
+matching indices:  0 1
+matching examples:
+2s8=-@g9=1.com---------true
+g9=1.com---------false
+program:  startwith(concat(concat(<2>,concat(<s>,concat(<8>,concat(<=>,<->)))),<@>))
+automaton:  ((([2])(([s])(([8])(([=])([-])))))([@])).*
+matching indices:  0 1
+matching examples:
+2s8=-@g9=1.com---------true
+g9=1.com---------false
+program:  startwith(concat(repeatatleast(<any>,4),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  (((.){4,})(([\.])(([c])(([o])([m]))))).*
+matching indices:  0 2
+matching examples:
+2s8=-@g9=1.com---------true
+2s8=-@---------false
+program:  endwith(or(<c>,or(<@>,or(<o>,or(<.>,<m>)))))
+automaton:  .*((([c])|((([@])|((([o])|((([\.])|([m])))))))))
+matching indices:  0
+matching examples:
+2s8=-@g9=1.com---------true
+program:  endwith(<c>)
+automaton:  .*([c])
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  endwith(<@>)
+automaton:  .*([@])
+matching indices:  1
+matching examples:
+g9=1.com---------false
+program:  endwith(<o>)
+automaton:  .*([o])
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  endwith(<.>)
+automaton:  .*([\.])
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  endwith(<m>)
+automaton:  .*([m])
+matching indices:  0 2
+matching examples:
+2s8=-@g9=1.com---------true
+2s8=-@---------false
+program:  endwith(concat(<.>,concat(<c>,concat(<o>,<m>))))
+automaton:  .*(([\.])(([c])(([o])([m]))))
+matching indices:  0 2
+matching examples:
+2s8=-@g9=1.com---------true
+2s8=-@---------false
+program:  endwith(<any>)
+automaton:  .*(.)
+matching indices:  0
+matching examples:
+2s8=-@g9=1.com---------true
+program:  endwith(repeatatleast(<any>,4))
+automaton:  .*((.){4,})
+matching indices:  0
+matching examples:
+2s8=-@g9=1.com---------true
+program:  endwith(concat(repeatatleast(<any>,5),<@>))
+automaton:  .*(((.){5,})([@]))
+matching indices:  1
+matching examples:
+g9=1.com---------false
+program:  endwith(concat(concat(<2>,concat(<s>,concat(<8>,concat(<=>,<->)))),<@>))
+automaton:  .*((([2])(([s])(([8])(([=])([-])))))([@]))
+matching indices:  1
+matching examples:
+g9=1.com---------false
+program:  endwith(concat(repeatatleast(<any>,4),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  .*(((.){4,})(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+2s8=-@g9=1.com---------true
+2s8=-@---------false
+program:  contain(or(<c>,or(<@>,or(<o>,or(<.>,<m>)))))
+automaton:  .*((([c])|((([@])|((([o])|((([\.])|([m]))))))))).*
+matching indices:  0
+matching examples:
+2s8=-@g9=1.com---------true
+program:  contain(<c>)
+automaton:  .*([c]).*
+matching indices:  0 2
+matching examples:
+2s8=-@g9=1.com---------true
+2s8=-@---------false
+program:  contain(<@>)
+automaton:  .*([@]).*
+matching indices:  0 1
+matching examples:
+2s8=-@g9=1.com---------true
+g9=1.com---------false
+program:  contain(<o>)
+automaton:  .*([o]).*
+matching indices:  0 2
+matching examples:
+2s8=-@g9=1.com---------true
+2s8=-@---------false
+program:  contain(<.>)
+automaton:  .*([\.]).*
+matching indices:  0 2
+matching examples:
+2s8=-@g9=1.com---------true
+2s8=-@---------false
+program:  contain(<m>)
+automaton:  .*([m]).*
+matching indices:  0 2
+matching examples:
+2s8=-@g9=1.com---------true
+2s8=-@---------false
+program:  contain(concat(<.>,concat(<c>,concat(<o>,<m>))))
+automaton:  .*(([\.])(([c])(([o])([m])))).*
+matching indices:  0 2
+matching examples:
+2s8=-@g9=1.com---------true
+2s8=-@---------false
+program:  contain(<any>)
+automaton:  .*(.).*
+matching indices:  0
+matching examples:
+2s8=-@g9=1.com---------true
+program:  contain(repeatatleast(<any>,4))
+automaton:  .*((.){4,}).*
+matching indices:  0
+matching examples:
+2s8=-@g9=1.com---------true
+program:  contain(concat(repeatatleast(<any>,5),<@>))
+automaton:  .*(((.){5,})([@])).*
+matching indices:  0 1
+matching examples:
+2s8=-@g9=1.com---------true
+g9=1.com---------false
+program:  contain(concat(concat(<2>,concat(<s>,concat(<8>,concat(<=>,<->)))),<@>))
+automaton:  .*((([2])(([s])(([8])(([=])([-])))))([@])).*
+matching indices:  0 1
+matching examples:
+2s8=-@g9=1.com---------true
+g9=1.com---------false
+program:  contain(concat(repeatatleast(<any>,4),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  .*(((.){4,})(([\.])(([c])(([o])([m]))))).*
+matching indices:  0 2
+matching examples:
+2s8=-@g9=1.com---------true
+2s8=-@---------false
+program:  optional(or(<c>,or(<@>,or(<o>,or(<.>,<m>)))))
+automaton:  ((([c])|((([@])|((([o])|((([\.])|([m])))))))))?
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  optional(<c>)
+automaton:  ([c])?
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  optional(<@>)
+automaton:  ([@])?
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  optional(<o>)
+automaton:  ([o])?
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  optional(<.>)
+automaton:  ([\.])?
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  optional(<m>)
+automaton:  ([m])?
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  optional(concat(<.>,concat(<c>,concat(<o>,<m>))))
+automaton:  (([\.])(([c])(([o])([m]))))?
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  optional(<any>)
+automaton:  (.)?
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  optional(repeatatleast(<any>,4))
+automaton:  ((.){4,})?
+matching indices:  0
+matching examples:
+2s8=-@g9=1.com---------true
+program:  optional(concat(repeatatleast(<any>,5),<@>))
+automaton:  (((.){5,})([@]))?
+matching indices:  1
+matching examples:
+g9=1.com---------false
+program:  optional(concat(concat(<2>,concat(<s>,concat(<8>,concat(<=>,<->)))),<@>))
+automaton:  ((([2])(([s])(([8])(([=])([-])))))([@]))?
+matching indices:  1
+matching examples:
+g9=1.com---------false
+program:  optional(concat(repeatatleast(<any>,4),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  (((.){4,})(([\.])(([c])(([o])([m])))))?
+matching indices:  0 2
+matching examples:
+2s8=-@g9=1.com---------true
+2s8=-@---------false
+program:  not(or(<c>,or(<@>,or(<o>,or(<.>,<m>)))))
+automaton:  ~((([c])|((([@])|((([o])|((([\.])|([m])))))))))
+matching indices:  0
+matching examples:
+2s8=-@g9=1.com---------true
+program:  not(<c>)
+automaton:  ~([c])
+matching indices:  0
+matching examples:
+2s8=-@g9=1.com---------true
+program:  not(<@>)
+automaton:  ~([@])
+matching indices:  0
+matching examples:
+2s8=-@g9=1.com---------true
+program:  not(<o>)
+automaton:  ~([o])
+matching indices:  0
+matching examples:
+2s8=-@g9=1.com---------true
+program:  not(<.>)
+automaton:  ~([\.])
+matching indices:  0
+matching examples:
+2s8=-@g9=1.com---------true
+program:  not(<m>)
+automaton:  ~([m])
+matching indices:  0
+matching examples:
+2s8=-@g9=1.com---------true
+program:  not(concat(<.>,concat(<c>,concat(<o>,<m>))))
+automaton:  ~(([\.])(([c])(([o])([m]))))
+matching indices:  0
+matching examples:
+2s8=-@g9=1.com---------true
+program:  not(<any>)
+automaton:  ~(.)
+matching indices:  0
+matching examples:
+2s8=-@g9=1.com---------true
+program:  not(repeatatleast(<any>,4))
+automaton:  ~((.){4,})
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  not(concat(repeatatleast(<any>,5),<@>))
+automaton:  ~(((.){5,})([@]))
+matching indices:  0 2
+matching examples:
+2s8=-@g9=1.com---------true
+2s8=-@---------false
+program:  not(concat(concat(<2>,concat(<s>,concat(<8>,concat(<=>,<->)))),<@>))
+automaton:  ~((([2])(([s])(([8])(([=])([-])))))([@]))
+matching indices:  0 2
+matching examples:
+2s8=-@g9=1.com---------true
+2s8=-@---------false
+program:  not(concat(repeatatleast(<any>,4),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ~(((.){4,})(([\.])(([c])(([o])([m])))))
+matching indices:  1
+matching examples:
+g9=1.com---------false
+program:  star(or(<c>,or(<@>,or(<o>,or(<.>,<m>)))))
+automaton:  ((([c])|((([@])|((([o])|((([\.])|([m])))))))))*
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  star(<c>)
+automaton:  ([c])*
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  star(<@>)
+automaton:  ([@])*
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  star(<o>)
+automaton:  ([o])*
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  star(<.>)
+automaton:  ([\.])*
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  star(<m>)
+automaton:  ([m])*
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  star(concat(<.>,concat(<c>,concat(<o>,<m>))))
+automaton:  (([\.])(([c])(([o])([m]))))*
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  star(<any>)
+automaton:  (.)*
+matching indices:  0
+matching examples:
+2s8=-@g9=1.com---------true
+program:  star(concat(repeatatleast(<any>,5),<@>))
+automaton:  (((.){5,})([@]))*
+matching indices:  1
+matching examples:
+g9=1.com---------false
+program:  star(concat(concat(<2>,concat(<s>,concat(<8>,concat(<=>,<->)))),<@>))
+automaton:  ((([2])(([s])(([8])(([=])([-])))))([@]))*
+matching indices:  1
+matching examples:
+g9=1.com---------false
+program:  star(concat(repeatatleast(<any>,4),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  (((.){4,})(([\.])(([c])(([o])([m])))))*
+matching indices:  0 2
+matching examples:
+2s8=-@g9=1.com---------true
+2s8=-@---------false
+program:  repeat(or(<c>,or(<@>,or(<o>,or(<.>,<m>)))),14)
+automaton:  ((([c])|((([@])|((([o])|((([\.])|([m]))))))))){14}
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  repeat(<c>,14)
+automaton:  ([c]){14}
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  repeat(<@>,14)
+automaton:  ([@]){14}
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  repeat(<o>,14)
+automaton:  ([o]){14}
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  repeat(<.>,14)
+automaton:  ([\.]){14}
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  repeat(<m>,14)
+automaton:  ([m]){14}
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  repeat(<any>,14)
+automaton:  (.){14}
+matching indices:  0 1 2
+matching examples:
+2s8=-@g9=1.com---------true
+g9=1.com---------false
+2s8=-@---------false
+program:  repeat(concat(repeatatleast(<any>,5),<@>),2)
+automaton:  (((.){5,})([@])){2}
+matching indices:  1 2
+matching examples:
+g9=1.com---------false
+2s8=-@---------false
+program:  repeatrange(<any>,13,14)
+automaton:  (.){13,14}
+matching indices:  0 1 2
+matching examples:
+2s8=-@g9=1.com---------true
+g9=1.com---------false
+2s8=-@---------false
+program:  repeatrange(<any>,12,14)
+automaton:  (.){12,14}
+matching indices:  0 1 2
+matching examples:
+2s8=-@g9=1.com---------true
+g9=1.com---------false
+2s8=-@---------false
+program:  repeatrange(<any>,11,14)
+automaton:  (.){11,14}
+matching indices:  0 1 2
+matching examples:
+2s8=-@g9=1.com---------true
+g9=1.com---------false
+2s8=-@---------false
+program:  repeatrange(<any>,10,14)
+automaton:  (.){10,14}
+matching indices:  0 1 2
+matching examples:
+2s8=-@g9=1.com---------true
+g9=1.com---------false
+2s8=-@---------false
