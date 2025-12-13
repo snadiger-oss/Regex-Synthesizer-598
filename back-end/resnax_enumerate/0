@@ -1,645 +1,3861 @@
-program:  or(<c>,or(<@>,or(<o>,or(<.>,<m>))))
-automaton:  (([c])|((([@])|((([o])|((([\.])|([m]))))))))
-matching indices:  1 2
-matching examples:
-g9=1.com---------false
-2s8=-@---------false
-program:  <c>
-automaton:  [c]
-matching indices:  1 2
-matching examples:
-g9=1.com---------false
-2s8=-@---------false
 program:  <@>
 automaton:  [@]
-matching indices:  1 2
+matching indices:  1 2 3
 matching examples:
-g9=1.com---------false
-2s8=-@---------false
-program:  <o>
-automaton:  [o]
-matching indices:  1 2
-matching examples:
-g9=1.com---------false
-2s8=-@---------false
-program:  <.>
-automaton:  [\.]
-matching indices:  1 2
-matching examples:
-g9=1.com---------false
-2s8=-@---------false
-program:  <m>
-automaton:  [m]
-matching indices:  1 2
-matching examples:
-g9=1.com---------false
-2s8=-@---------false
-program:  concat(<.>,concat(<c>,concat(<o>,<m>)))
-automaton:  ([\.])(([c])(([o])([m])))
-matching indices:  1 2
-matching examples:
-g9=1.com---------false
-2s8=-@---------false
-program:  <any>
-automaton:  .
-matching indices:  1 2
-matching examples:
-g9=1.com---------false
-2s8=-@---------false
-program:  repeatatleast(<any>,4)
-automaton:  (.){4,}
-matching indices:  0
-matching examples:
-2s8=-@g9=1.com---------true
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
 program:  concat(repeatatleast(<any>,5),<@>)
 automaton:  ((.){5,})([@])
-matching indices:  1
+matching indices:  1 2 3
 matching examples:
-g9=1.com---------false
-program:  concat(concat(<2>,concat(<s>,concat(<8>,concat(<=>,<->)))),<@>)
-automaton:  (([2])(([s])(([8])(([=])([-])))))([@])
-matching indices:  1
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(<@>,repeatatleast(<any>,4))
+automaton:  ([@])((.){4,})
+matching indices:  1 2 3
 matching examples:
-g9=1.com---------false
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
 program:  concat(repeatatleast(<any>,4),concat(<.>,concat(<c>,concat(<o>,<m>))))
 automaton:  ((.){4,})(([\.])(([c])(([o])([m]))))
 matching indices:  0 2
 matching examples:
-2s8=-@g9=1.com---------true
-2s8=-@---------false
-program:  <c>
-automaton:  [c]
-matching indices:  1 2
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(concat(<1>,concat(<2>,concat(<3>,<4>))),concat(<.>,concat(<c>,concat(<o>,<m>))))
+automaton:  (([1])(([2])(([3])([4]))))(([\.])(([c])(([o])([m]))))
+matching indices:  1 2 3
 matching examples:
-g9=1.com---------false
-2s8=-@---------false
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(concat(<1>,concat(<2>,concat(<3>,concat(<4>,<5>)))),<@>)
+automaton:  (([1])(([2])(([3])(([4])([5])))))([@])
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(<@>,concat(<1>,concat(<2>,concat(<3>,<4>))))
+automaton:  ([@])(([1])(([2])(([3])([4]))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
 program:  <@>
 automaton:  [@]
-matching indices:  1 2
+matching indices:  1 2 3
 matching examples:
-g9=1.com---------false
-2s8=-@---------false
-program:  <o>
-automaton:  [o]
-matching indices:  1 2
-matching examples:
-g9=1.com---------false
-2s8=-@---------false
-program:  <.>
-automaton:  [\.]
-matching indices:  1 2
-matching examples:
-g9=1.com---------false
-2s8=-@---------false
-program:  <m>
-automaton:  [m]
-matching indices:  1 2
-matching examples:
-g9=1.com---------false
-2s8=-@---------false
-program:  or(<c>,or(<@>,or(<o>,or(<.>,<m>))))
-automaton:  (([c])|((([@])|((([o])|((([\.])|([m]))))))))
-matching indices:  1 2
-matching examples:
-g9=1.com---------false
-2s8=-@---------false
-program:  concat(<.>,concat(<c>,concat(<o>,<m>)))
-automaton:  ([\.])(([c])(([o])([m])))
-matching indices:  1 2
-matching examples:
-g9=1.com---------false
-2s8=-@---------false
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
 program:  <any>
 automaton:  .
-matching indices:  1 2
+matching indices:  1 2 3
 matching examples:
-g9=1.com---------false
-2s8=-@---------false
-program:  repeatatleast(<any>,4)
-automaton:  (.){4,}
-matching indices:  0
-matching examples:
-2s8=-@g9=1.com---------true
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
 program:  concat(repeatatleast(<any>,5),<@>)
 automaton:  ((.){5,})([@])
-matching indices:  1
+matching indices:  1 2 3
 matching examples:
-g9=1.com---------false
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(<@>,repeatatleast(<any>,4))
+automaton:  ([@])((.){4,})
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  <.>
+automaton:  [\.]
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  <c>
+automaton:  [c]
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  <o>
+automaton:  [o]
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  <m>
+automaton:  [m]
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(<.>,concat(<c>,concat(<o>,<m>))))
+automaton:  ((.){4,})(([\.])(([c])(([o])([m]))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  <1>
+automaton:  [1]
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
 program:  <2>
 automaton:  [2]
-matching indices:  1 2
+matching indices:  1 2 3
 matching examples:
-g9=1.com---------false
-2s8=-@---------false
-program:  <s>
-automaton:  [s]
-matching indices:  1 2
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  <3>
+automaton:  [3]
+matching indices:  1 2 3
 matching examples:
-g9=1.com---------false
-2s8=-@---------false
-program:  <8>
-automaton:  [8]
-matching indices:  1 2
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  <4>
+automaton:  [4]
+matching indices:  1 2 3
 matching examples:
-g9=1.com---------false
-2s8=-@---------false
-program:  <=>
-automaton:  [=]
-matching indices:  1 2
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(concat(<1>,concat(<2>,concat(<3>,<4>))),concat(<.>,concat(<c>,concat(<o>,<m>))))
+automaton:  (([1])(([2])(([3])([4]))))(([\.])(([c])(([o])([m]))))
+matching indices:  1 2 3
 matching examples:
-g9=1.com---------false
-2s8=-@---------false
-program:  <->
-automaton:  [-]
-matching indices:  1 2
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  <5>
+automaton:  [5]
+matching indices:  1 2 3
 matching examples:
-g9=1.com---------false
-2s8=-@---------false
-program:  concat(concat(<2>,concat(<s>,concat(<8>,concat(<=>,<->)))),<@>)
-automaton:  (([2])(([s])(([8])(([=])([-])))))([@])
-matching indices:  1
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(concat(<1>,concat(<2>,concat(<3>,concat(<4>,<5>)))),<@>)
+automaton:  (([1])(([2])(([3])(([4])([5])))))([@])
+matching indices:  1 2 3
 matching examples:
-g9=1.com---------false
-program:  concat(repeatatleast(<any>,4),concat(<.>,concat(<c>,concat(<o>,<m>))))
-automaton:  ((.){4,})(([\.])(([c])(([o])([m]))))
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(<@>,concat(<1>,concat(<2>,concat(<3>,<4>))))
+automaton:  ([@])(([1])(([2])(([3])([4]))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(<@>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})(([@])(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(<c>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})(([c])(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(<num>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})(([0-9])(([\.])(([c])(([o])([m])))))
 matching indices:  0 2
 matching examples:
-2s8=-@g9=1.com---------true
-2s8=-@---------false
-program:  startwith(or(<c>,or(<@>,or(<o>,or(<.>,<m>)))))
-automaton:  ((([c])|((([@])|((([o])|((([\.])|([m]))))))))).*
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(<m>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})(([m])(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(<any>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((.)(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(<.>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})(([\.])(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(<num1-9>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})(([1-9])(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(<o>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})(([o])(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(<1>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})(([1])(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(<alphanum>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})(([a-zA-Z0-9])(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(<2>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})(([2])(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(<3>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})(([3])(([\.])(([c])(([o])([m])))))
 matching indices:  1 2
 matching examples:
-g9=1.com---------false
-2s8=-@---------false
-program:  startwith(<c>)
-automaton:  ([c]).*
-matching indices:  1 2
+123451234.com---------false
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(<4>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})(([4])(([\.])(([c])(([o])([m])))))
+matching indices:  0 2 3
 matching examples:
-g9=1.com---------false
-2s8=-@---------false
+12345@1234.com---------true
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(<5>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})(([5])(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(<low>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})(([a-z])(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(concat(<1>,concat(<2>,concat(<3>,<4>))),concat(<@>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  (([1])(([2])(([3])([4]))))(([@])(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(concat(<1>,concat(<2>,concat(<3>,<4>))),concat(<c>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  (([1])(([2])(([3])([4]))))(([c])(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(concat(<1>,concat(<2>,concat(<3>,<4>))),concat(<num>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  (([1])(([2])(([3])([4]))))(([0-9])(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(concat(<1>,concat(<2>,concat(<3>,<4>))),concat(<m>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  (([1])(([2])(([3])([4]))))(([m])(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(concat(<1>,concat(<2>,concat(<3>,<4>))),concat(<any>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  (([1])(([2])(([3])([4]))))((.)(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(concat(<1>,concat(<2>,concat(<3>,<4>))),concat(<.>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  (([1])(([2])(([3])([4]))))(([\.])(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(concat(<1>,concat(<2>,concat(<3>,<4>))),concat(<num1-9>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  (([1])(([2])(([3])([4]))))(([1-9])(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(concat(<1>,concat(<2>,concat(<3>,<4>))),concat(<o>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  (([1])(([2])(([3])([4]))))(([o])(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(concat(<1>,concat(<2>,concat(<3>,<4>))),concat(<1>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  (([1])(([2])(([3])([4]))))(([1])(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(concat(<1>,concat(<2>,concat(<3>,<4>))),concat(<alphanum>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  (([1])(([2])(([3])([4]))))(([a-zA-Z0-9])(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(concat(<1>,concat(<2>,concat(<3>,<4>))),concat(<2>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  (([1])(([2])(([3])([4]))))(([2])(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(concat(<1>,concat(<2>,concat(<3>,<4>))),concat(<3>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  (([1])(([2])(([3])([4]))))(([3])(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(concat(<1>,concat(<2>,concat(<3>,<4>))),concat(<4>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  (([1])(([2])(([3])([4]))))(([4])(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(concat(<1>,concat(<2>,concat(<3>,<4>))),concat(<5>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  (([1])(([2])(([3])([4]))))(([5])(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(concat(<1>,concat(<2>,concat(<3>,<4>))),concat(<low>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  (([1])(([2])(([3])([4]))))(([a-z])(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
 program:  startwith(<@>)
 automaton:  ([@]).*
-matching indices:  1 2
+matching indices:  1 2 3
 matching examples:
-g9=1.com---------false
-2s8=-@---------false
-program:  startwith(<o>)
-automaton:  ([o]).*
-matching indices:  1 2
-matching examples:
-g9=1.com---------false
-2s8=-@---------false
-program:  startwith(<.>)
-automaton:  ([\.]).*
-matching indices:  1 2
-matching examples:
-g9=1.com---------false
-2s8=-@---------false
-program:  startwith(<m>)
-automaton:  ([m]).*
-matching indices:  1 2
-matching examples:
-g9=1.com---------false
-2s8=-@---------false
-program:  startwith(concat(<.>,concat(<c>,concat(<o>,<m>))))
-automaton:  (([\.])(([c])(([o])([m])))).*
-matching indices:  1 2
-matching examples:
-g9=1.com---------false
-2s8=-@---------false
-program:  startwith(<any>)
-automaton:  (.).*
-matching indices:  0
-matching examples:
-2s8=-@g9=1.com---------true
-program:  startwith(repeatatleast(<any>,4))
-automaton:  ((.){4,}).*
-matching indices:  0
-matching examples:
-2s8=-@g9=1.com---------true
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
 program:  startwith(concat(repeatatleast(<any>,5),<@>))
 automaton:  (((.){5,})([@])).*
 matching indices:  0 1
 matching examples:
-2s8=-@g9=1.com---------true
-g9=1.com---------false
-program:  startwith(concat(concat(<2>,concat(<s>,concat(<8>,concat(<=>,<->)))),<@>))
-automaton:  ((([2])(([s])(([8])(([=])([-])))))([@])).*
-matching indices:  0 1
+12345@1234.com---------true
+123451234.com---------false
+program:  startwith(concat(<@>,repeatatleast(<any>,4)))
+automaton:  (([@])((.){4,})).*
+matching indices:  1 2 3
 matching examples:
-2s8=-@g9=1.com---------true
-g9=1.com---------false
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
 program:  startwith(concat(repeatatleast(<any>,4),concat(<.>,concat(<c>,concat(<o>,<m>)))))
 automaton:  (((.){4,})(([\.])(([c])(([o])([m]))))).*
 matching indices:  0 2
 matching examples:
-2s8=-@g9=1.com---------true
-2s8=-@---------false
-program:  endwith(or(<c>,or(<@>,or(<o>,or(<.>,<m>)))))
-automaton:  .*((([c])|((([@])|((([o])|((([\.])|([m])))))))))
-matching indices:  0
+12345@1234.com---------true
+12345@1234---------false
+program:  startwith(concat(concat(<1>,concat(<2>,concat(<3>,<4>))),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((([1])(([2])(([3])([4]))))(([\.])(([c])(([o])([m]))))).*
+matching indices:  1 2 3
 matching examples:
-2s8=-@g9=1.com---------true
-program:  endwith(<c>)
-automaton:  .*([c])
-matching indices:  1 2
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  startwith(concat(concat(<1>,concat(<2>,concat(<3>,concat(<4>,<5>)))),<@>))
+automaton:  ((([1])(([2])(([3])(([4])([5])))))([@])).*
+matching indices:  0 1
 matching examples:
-g9=1.com---------false
-2s8=-@---------false
+12345@1234.com---------true
+123451234.com---------false
+program:  startwith(concat(<@>,concat(<1>,concat(<2>,concat(<3>,<4>)))))
+automaton:  (([@])(([1])(([2])(([3])([4]))))).*
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
 program:  endwith(<@>)
 automaton:  .*([@])
-matching indices:  1
+matching indices:  1 2 3
 matching examples:
-g9=1.com---------false
-program:  endwith(<o>)
-automaton:  .*([o])
-matching indices:  1 2
-matching examples:
-g9=1.com---------false
-2s8=-@---------false
-program:  endwith(<.>)
-automaton:  .*([\.])
-matching indices:  1 2
-matching examples:
-g9=1.com---------false
-2s8=-@---------false
-program:  endwith(<m>)
-automaton:  .*([m])
-matching indices:  0 2
-matching examples:
-2s8=-@g9=1.com---------true
-2s8=-@---------false
-program:  endwith(concat(<.>,concat(<c>,concat(<o>,<m>))))
-automaton:  .*(([\.])(([c])(([o])([m]))))
-matching indices:  0 2
-matching examples:
-2s8=-@g9=1.com---------true
-2s8=-@---------false
-program:  endwith(<any>)
-automaton:  .*(.)
-matching indices:  0
-matching examples:
-2s8=-@g9=1.com---------true
-program:  endwith(repeatatleast(<any>,4))
-automaton:  .*((.){4,})
-matching indices:  0
-matching examples:
-2s8=-@g9=1.com---------true
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
 program:  endwith(concat(repeatatleast(<any>,5),<@>))
 automaton:  .*(((.){5,})([@]))
-matching indices:  1
+matching indices:  1 2 3
 matching examples:
-g9=1.com---------false
-program:  endwith(concat(concat(<2>,concat(<s>,concat(<8>,concat(<=>,<->)))),<@>))
-automaton:  .*((([2])(([s])(([8])(([=])([-])))))([@]))
-matching indices:  1
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  endwith(concat(<@>,repeatatleast(<any>,4)))
+automaton:  .*(([@])((.){4,}))
+matching indices:  0 1
 matching examples:
-g9=1.com---------false
+12345@1234.com---------true
+123451234.com---------false
 program:  endwith(concat(repeatatleast(<any>,4),concat(<.>,concat(<c>,concat(<o>,<m>)))))
 automaton:  .*(((.){4,})(([\.])(([c])(([o])([m])))))
 matching indices:  0 2
 matching examples:
-2s8=-@g9=1.com---------true
-2s8=-@---------false
-program:  contain(or(<c>,or(<@>,or(<o>,or(<.>,<m>)))))
-automaton:  .*((([c])|((([@])|((([o])|((([\.])|([m]))))))))).*
-matching indices:  0
+12345@1234.com---------true
+12345@1234---------false
+program:  endwith(concat(concat(<1>,concat(<2>,concat(<3>,<4>))),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  .*((([1])(([2])(([3])([4]))))(([\.])(([c])(([o])([m])))))
+matching indices:  0 2 3
 matching examples:
-2s8=-@g9=1.com---------true
-program:  contain(<c>)
-automaton:  .*([c]).*
-matching indices:  0 2
+12345@1234.com---------true
+12345@1234---------false
+12345@123.com---------false
+program:  endwith(concat(concat(<1>,concat(<2>,concat(<3>,concat(<4>,<5>)))),<@>))
+automaton:  .*((([1])(([2])(([3])(([4])([5])))))([@]))
+matching indices:  1 2 3
 matching examples:
-2s8=-@g9=1.com---------true
-2s8=-@---------false
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  endwith(concat(<@>,concat(<1>,concat(<2>,concat(<3>,<4>)))))
+automaton:  .*(([@])(([1])(([2])(([3])([4])))))
+matching indices:  1 3
+matching examples:
+123451234.com---------false
+12345@123.com---------false
 program:  contain(<@>)
 automaton:  .*([@]).*
 matching indices:  0 1
 matching examples:
-2s8=-@g9=1.com---------true
-g9=1.com---------false
-program:  contain(<o>)
-automaton:  .*([o]).*
-matching indices:  0 2
-matching examples:
-2s8=-@g9=1.com---------true
-2s8=-@---------false
-program:  contain(<.>)
-automaton:  .*([\.]).*
-matching indices:  0 2
-matching examples:
-2s8=-@g9=1.com---------true
-2s8=-@---------false
-program:  contain(<m>)
-automaton:  .*([m]).*
-matching indices:  0 2
-matching examples:
-2s8=-@g9=1.com---------true
-2s8=-@---------false
-program:  contain(concat(<.>,concat(<c>,concat(<o>,<m>))))
-automaton:  .*(([\.])(([c])(([o])([m])))).*
-matching indices:  0 2
-matching examples:
-2s8=-@g9=1.com---------true
-2s8=-@---------false
-program:  contain(<any>)
-automaton:  .*(.).*
-matching indices:  0
-matching examples:
-2s8=-@g9=1.com---------true
-program:  contain(repeatatleast(<any>,4))
-automaton:  .*((.){4,}).*
-matching indices:  0
-matching examples:
-2s8=-@g9=1.com---------true
+12345@1234.com---------true
+123451234.com---------false
 program:  contain(concat(repeatatleast(<any>,5),<@>))
 automaton:  .*(((.){5,})([@])).*
 matching indices:  0 1
 matching examples:
-2s8=-@g9=1.com---------true
-g9=1.com---------false
-program:  contain(concat(concat(<2>,concat(<s>,concat(<8>,concat(<=>,<->)))),<@>))
-automaton:  .*((([2])(([s])(([8])(([=])([-])))))([@])).*
+12345@1234.com---------true
+123451234.com---------false
+program:  contain(concat(<@>,repeatatleast(<any>,4)))
+automaton:  .*(([@])((.){4,})).*
 matching indices:  0 1
 matching examples:
-2s8=-@g9=1.com---------true
-g9=1.com---------false
+12345@1234.com---------true
+123451234.com---------false
 program:  contain(concat(repeatatleast(<any>,4),concat(<.>,concat(<c>,concat(<o>,<m>)))))
 automaton:  .*(((.){4,})(([\.])(([c])(([o])([m]))))).*
 matching indices:  0 2
 matching examples:
-2s8=-@g9=1.com---------true
-2s8=-@---------false
-program:  optional(or(<c>,or(<@>,or(<o>,or(<.>,<m>)))))
-automaton:  ((([c])|((([@])|((([o])|((([\.])|([m])))))))))?
-matching indices:  1 2
+12345@1234.com---------true
+12345@1234---------false
+program:  contain(concat(concat(<1>,concat(<2>,concat(<3>,<4>))),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  .*((([1])(([2])(([3])([4]))))(([\.])(([c])(([o])([m]))))).*
+matching indices:  0 2 3
 matching examples:
-g9=1.com---------false
-2s8=-@---------false
-program:  optional(<c>)
-automaton:  ([c])?
-matching indices:  1 2
+12345@1234.com---------true
+12345@1234---------false
+12345@123.com---------false
+program:  contain(concat(concat(<1>,concat(<2>,concat(<3>,concat(<4>,<5>)))),<@>))
+automaton:  .*((([1])(([2])(([3])(([4])([5])))))([@])).*
+matching indices:  0 1
 matching examples:
-g9=1.com---------false
-2s8=-@---------false
+12345@1234.com---------true
+123451234.com---------false
+program:  contain(concat(<@>,concat(<1>,concat(<2>,concat(<3>,<4>)))))
+automaton:  .*(([@])(([1])(([2])(([3])([4]))))).*
+matching indices:  0 1 3
+matching examples:
+12345@1234.com---------true
+123451234.com---------false
+12345@123.com---------false
 program:  optional(<@>)
 automaton:  ([@])?
-matching indices:  1 2
+matching indices:  1 2 3
 matching examples:
-g9=1.com---------false
-2s8=-@---------false
-program:  optional(<o>)
-automaton:  ([o])?
-matching indices:  1 2
-matching examples:
-g9=1.com---------false
-2s8=-@---------false
-program:  optional(<.>)
-automaton:  ([\.])?
-matching indices:  1 2
-matching examples:
-g9=1.com---------false
-2s8=-@---------false
-program:  optional(<m>)
-automaton:  ([m])?
-matching indices:  1 2
-matching examples:
-g9=1.com---------false
-2s8=-@---------false
-program:  optional(concat(<.>,concat(<c>,concat(<o>,<m>))))
-automaton:  (([\.])(([c])(([o])([m]))))?
-matching indices:  1 2
-matching examples:
-g9=1.com---------false
-2s8=-@---------false
-program:  optional(<any>)
-automaton:  (.)?
-matching indices:  1 2
-matching examples:
-g9=1.com---------false
-2s8=-@---------false
-program:  optional(repeatatleast(<any>,4))
-automaton:  ((.){4,})?
-matching indices:  0
-matching examples:
-2s8=-@g9=1.com---------true
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
 program:  optional(concat(repeatatleast(<any>,5),<@>))
 automaton:  (((.){5,})([@]))?
-matching indices:  1
+matching indices:  1 2 3
 matching examples:
-g9=1.com---------false
-program:  optional(concat(concat(<2>,concat(<s>,concat(<8>,concat(<=>,<->)))),<@>))
-automaton:  ((([2])(([s])(([8])(([=])([-])))))([@]))?
-matching indices:  1
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  optional(concat(<@>,repeatatleast(<any>,4)))
+automaton:  (([@])((.){4,}))?
+matching indices:  1 2 3
 matching examples:
-g9=1.com---------false
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
 program:  optional(concat(repeatatleast(<any>,4),concat(<.>,concat(<c>,concat(<o>,<m>)))))
 automaton:  (((.){4,})(([\.])(([c])(([o])([m])))))?
 matching indices:  0 2
 matching examples:
-2s8=-@g9=1.com---------true
-2s8=-@---------false
-program:  not(or(<c>,or(<@>,or(<o>,or(<.>,<m>)))))
-automaton:  ~((([c])|((([@])|((([o])|((([\.])|([m])))))))))
-matching indices:  0
+12345@1234.com---------true
+12345@1234---------false
+program:  optional(concat(concat(<1>,concat(<2>,concat(<3>,<4>))),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((([1])(([2])(([3])([4]))))(([\.])(([c])(([o])([m])))))?
+matching indices:  1 2 3
 matching examples:
-2s8=-@g9=1.com---------true
-program:  not(<c>)
-automaton:  ~([c])
-matching indices:  0
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  optional(concat(concat(<1>,concat(<2>,concat(<3>,concat(<4>,<5>)))),<@>))
+automaton:  ((([1])(([2])(([3])(([4])([5])))))([@]))?
+matching indices:  1 2 3
 matching examples:
-2s8=-@g9=1.com---------true
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  optional(concat(<@>,concat(<1>,concat(<2>,concat(<3>,<4>)))))
+automaton:  (([@])(([1])(([2])(([3])([4])))))?
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
 program:  not(<@>)
 automaton:  ~([@])
 matching indices:  0
 matching examples:
-2s8=-@g9=1.com---------true
-program:  not(<o>)
-automaton:  ~([o])
-matching indices:  0
-matching examples:
-2s8=-@g9=1.com---------true
-program:  not(<.>)
-automaton:  ~([\.])
-matching indices:  0
-matching examples:
-2s8=-@g9=1.com---------true
-program:  not(<m>)
-automaton:  ~([m])
-matching indices:  0
-matching examples:
-2s8=-@g9=1.com---------true
-program:  not(concat(<.>,concat(<c>,concat(<o>,<m>))))
-automaton:  ~(([\.])(([c])(([o])([m]))))
-matching indices:  0
-matching examples:
-2s8=-@g9=1.com---------true
-program:  not(<any>)
-automaton:  ~(.)
-matching indices:  0
-matching examples:
-2s8=-@g9=1.com---------true
-program:  not(repeatatleast(<any>,4))
-automaton:  ~((.){4,})
-matching indices:  1 2
-matching examples:
-g9=1.com---------false
-2s8=-@---------false
+12345@1234.com---------true
 program:  not(concat(repeatatleast(<any>,5),<@>))
 automaton:  ~(((.){5,})([@]))
-matching indices:  0 2
-matching examples:
-2s8=-@g9=1.com---------true
-2s8=-@---------false
-program:  not(concat(concat(<2>,concat(<s>,concat(<8>,concat(<=>,<->)))),<@>))
-automaton:  ~((([2])(([s])(([8])(([=])([-])))))([@]))
-matching indices:  0 2
-matching examples:
-2s8=-@g9=1.com---------true
-2s8=-@---------false
-program:  not(concat(repeatatleast(<any>,4),concat(<.>,concat(<c>,concat(<o>,<m>)))))
-automaton:  ~(((.){4,})(([\.])(([c])(([o])([m])))))
-matching indices:  1
-matching examples:
-g9=1.com---------false
-program:  star(or(<c>,or(<@>,or(<o>,or(<.>,<m>)))))
-automaton:  ((([c])|((([@])|((([o])|((([\.])|([m])))))))))*
-matching indices:  1 2
-matching examples:
-g9=1.com---------false
-2s8=-@---------false
-program:  star(<c>)
-automaton:  ([c])*
-matching indices:  1 2
-matching examples:
-g9=1.com---------false
-2s8=-@---------false
-program:  star(<@>)
-automaton:  ([@])*
-matching indices:  1 2
-matching examples:
-g9=1.com---------false
-2s8=-@---------false
-program:  star(<o>)
-automaton:  ([o])*
-matching indices:  1 2
-matching examples:
-g9=1.com---------false
-2s8=-@---------false
-program:  star(<.>)
-automaton:  ([\.])*
-matching indices:  1 2
-matching examples:
-g9=1.com---------false
-2s8=-@---------false
-program:  star(<m>)
-automaton:  ([m])*
-matching indices:  1 2
-matching examples:
-g9=1.com---------false
-2s8=-@---------false
-program:  star(concat(<.>,concat(<c>,concat(<o>,<m>))))
-automaton:  (([\.])(([c])(([o])([m]))))*
-matching indices:  1 2
-matching examples:
-g9=1.com---------false
-2s8=-@---------false
-program:  star(<any>)
-automaton:  (.)*
 matching indices:  0
 matching examples:
-2s8=-@g9=1.com---------true
+12345@1234.com---------true
+program:  not(concat(<@>,repeatatleast(<any>,4)))
+automaton:  ~(([@])((.){4,}))
+matching indices:  0
+matching examples:
+12345@1234.com---------true
+program:  not(concat(repeatatleast(<any>,4),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ~(((.){4,})(([\.])(([c])(([o])([m])))))
+matching indices:  1 3
+matching examples:
+123451234.com---------false
+12345@123.com---------false
+program:  not(concat(concat(<1>,concat(<2>,concat(<3>,<4>))),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ~((([1])(([2])(([3])([4]))))(([\.])(([c])(([o])([m])))))
+matching indices:  0
+matching examples:
+12345@1234.com---------true
+program:  not(concat(concat(<1>,concat(<2>,concat(<3>,concat(<4>,<5>)))),<@>))
+automaton:  ~((([1])(([2])(([3])(([4])([5])))))([@]))
+matching indices:  0
+matching examples:
+12345@1234.com---------true
+program:  not(concat(<@>,concat(<1>,concat(<2>,concat(<3>,<4>)))))
+automaton:  ~(([@])(([1])(([2])(([3])([4])))))
+matching indices:  0
+matching examples:
+12345@1234.com---------true
+program:  star(<@>)
+automaton:  ([@])*
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
 program:  star(concat(repeatatleast(<any>,5),<@>))
 automaton:  (((.){5,})([@]))*
-matching indices:  1
+matching indices:  1 2 3
 matching examples:
-g9=1.com---------false
-program:  star(concat(concat(<2>,concat(<s>,concat(<8>,concat(<=>,<->)))),<@>))
-automaton:  ((([2])(([s])(([8])(([=])([-])))))([@]))*
-matching indices:  1
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  star(concat(<@>,repeatatleast(<any>,4)))
+automaton:  (([@])((.){4,}))*
+matching indices:  1 2 3
 matching examples:
-g9=1.com---------false
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
 program:  star(concat(repeatatleast(<any>,4),concat(<.>,concat(<c>,concat(<o>,<m>)))))
 automaton:  (((.){4,})(([\.])(([c])(([o])([m])))))*
 matching indices:  0 2
 matching examples:
-2s8=-@g9=1.com---------true
-2s8=-@---------false
-program:  repeat(or(<c>,or(<@>,or(<o>,or(<.>,<m>)))),14)
-automaton:  ((([c])|((([@])|((([o])|((([\.])|([m]))))))))){14}
-matching indices:  1 2
+12345@1234.com---------true
+12345@1234---------false
+program:  star(concat(concat(<1>,concat(<2>,concat(<3>,<4>))),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((([1])(([2])(([3])([4]))))(([\.])(([c])(([o])([m])))))*
+matching indices:  1 2 3
 matching examples:
-g9=1.com---------false
-2s8=-@---------false
-program:  repeat(<c>,14)
-automaton:  ([c]){14}
-matching indices:  1 2
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  star(concat(concat(<1>,concat(<2>,concat(<3>,concat(<4>,<5>)))),<@>))
+automaton:  ((([1])(([2])(([3])(([4])([5])))))([@]))*
+matching indices:  1 2 3
 matching examples:
-g9=1.com---------false
-2s8=-@---------false
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  star(concat(<@>,concat(<1>,concat(<2>,concat(<3>,<4>)))))
+automaton:  (([@])(([1])(([2])(([3])([4])))))*
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
 program:  repeat(<@>,14)
 automaton:  ([@]){14}
-matching indices:  1 2
+matching indices:  1 2 3
 matching examples:
-g9=1.com---------false
-2s8=-@---------false
-program:  repeat(<o>,14)
-automaton:  ([o]){14}
-matching indices:  1 2
-matching examples:
-g9=1.com---------false
-2s8=-@---------false
-program:  repeat(<.>,14)
-automaton:  ([\.]){14}
-matching indices:  1 2
-matching examples:
-g9=1.com---------false
-2s8=-@---------false
-program:  repeat(<m>,14)
-automaton:  ([m]){14}
-matching indices:  1 2
-matching examples:
-g9=1.com---------false
-2s8=-@---------false
-program:  repeat(<any>,14)
-automaton:  (.){14}
-matching indices:  0 1 2
-matching examples:
-2s8=-@g9=1.com---------true
-g9=1.com---------false
-2s8=-@---------false
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
 program:  repeat(concat(repeatatleast(<any>,5),<@>),2)
 automaton:  (((.){5,})([@])){2}
-matching indices:  1 2
+matching indices:  1 2 3
 matching examples:
-g9=1.com---------false
-2s8=-@---------false
-program:  repeatrange(<any>,13,14)
-automaton:  (.){13,14}
-matching indices:  0 1 2
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeat(concat(<@>,repeatatleast(<any>,4)),2)
+automaton:  (([@])((.){4,})){2}
+matching indices:  1 2 3
 matching examples:
-2s8=-@g9=1.com---------true
-g9=1.com---------false
-2s8=-@---------false
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<@>,1)
+automaton:  ([@]){1,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<@>,2)
+automaton:  ([@]){2,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<@>,3)
+automaton:  ([@]){3,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<@>,4)
+automaton:  ([@]){4,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<@>,5)
+automaton:  ([@]){5,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<@>,6)
+automaton:  ([@]){6,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<@>,7)
+automaton:  ([@]){7,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<@>,8)
+automaton:  ([@]){8,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<@>,9)
+automaton:  ([@]){9,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<@>,10)
+automaton:  ([@]){10,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<@>,11)
+automaton:  ([@]){11,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<@>,12)
+automaton:  ([@]){12,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<@>,13)
+automaton:  ([@]){13,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<@>,14)
+automaton:  ([@]){14,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(concat(repeatatleast(<any>,5),<@>),1)
+automaton:  (((.){5,})([@])){1,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(concat(repeatatleast(<any>,5),<@>),2)
+automaton:  (((.){5,})([@])){2,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(concat(<@>,repeatatleast(<any>,4)),1)
+automaton:  (([@])((.){4,})){1,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(concat(<@>,repeatatleast(<any>,4)),2)
+automaton:  (([@])((.){4,})){2,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(concat(repeatatleast(<any>,4),concat(<.>,concat(<c>,concat(<o>,<m>)))),1)
+automaton:  (((.){4,})(([\.])(([c])(([o])([m]))))){1,}
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  repeatatleast(concat(concat(<1>,concat(<2>,concat(<3>,<4>))),concat(<.>,concat(<c>,concat(<o>,<m>)))),1)
+automaton:  ((([1])(([2])(([3])([4]))))(([\.])(([c])(([o])([m]))))){1,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(concat(concat(<1>,concat(<2>,concat(<3>,concat(<4>,<5>)))),<@>),1)
+automaton:  ((([1])(([2])(([3])(([4])([5])))))([@])){1,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(concat(concat(<1>,concat(<2>,concat(<3>,concat(<4>,<5>)))),<@>),2)
+automaton:  ((([1])(([2])(([3])(([4])([5])))))([@])){2,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(concat(<@>,concat(<1>,concat(<2>,concat(<3>,<4>)))),1)
+automaton:  (([@])(([1])(([2])(([3])([4]))))){1,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(concat(<@>,concat(<1>,concat(<2>,concat(<3>,<4>)))),2)
+automaton:  (([@])(([1])(([2])(([3])([4]))))){2,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  startwith(<@>)
+automaton:  ([@]).*
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  endwith(<@>)
+automaton:  .*([@])
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  contain(<@>)
+automaton:  .*([@]).*
+matching indices:  0 1
+matching examples:
+12345@1234.com---------true
+123451234.com---------false
+program:  optional(<@>)
+automaton:  ([@])?
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  not(<@>)
+automaton:  ~([@])
+matching indices:  0
+matching examples:
+12345@1234.com---------true
+program:  star(<@>)
+automaton:  ([@])*
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeat(<@>,14)
+automaton:  ([@]){14}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<@>,1)
+automaton:  ([@]){1,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<@>,2)
+automaton:  ([@]){2,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<@>,3)
+automaton:  ([@]){3,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<@>,4)
+automaton:  ([@]){4,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<@>,5)
+automaton:  ([@]){5,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<@>,6)
+automaton:  ([@]){6,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<@>,7)
+automaton:  ([@]){7,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<@>,8)
+automaton:  ([@]){8,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<@>,9)
+automaton:  ([@]){9,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<@>,10)
+automaton:  ([@]){10,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<@>,11)
+automaton:  ([@]){11,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<@>,12)
+automaton:  ([@]){12,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<@>,13)
+automaton:  ([@]){13,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<@>,14)
+automaton:  ([@]){14,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  startwith(<any>)
+automaton:  (.).*
+matching indices:  0
+matching examples:
+12345@1234.com---------true
+program:  endwith(<any>)
+automaton:  .*(.)
+matching indices:  0
+matching examples:
+12345@1234.com---------true
+program:  contain(<any>)
+automaton:  .*(.).*
+matching indices:  0
+matching examples:
+12345@1234.com---------true
+program:  optional(<any>)
+automaton:  (.)?
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  not(<any>)
+automaton:  ~(.)
+matching indices:  0
+matching examples:
+12345@1234.com---------true
+program:  star(<any>)
+automaton:  (.)*
+matching indices:  0
+matching examples:
+12345@1234.com---------true
+program:  repeat(<any>,14)
+automaton:  (.){14}
+matching indices:  0 1 2 3
+matching examples:
+12345@1234.com---------true
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
 program:  repeatrange(<any>,12,14)
 automaton:  (.){12,14}
-matching indices:  0 1 2
+matching indices:  0 2
 matching examples:
-2s8=-@g9=1.com---------true
-g9=1.com---------false
-2s8=-@---------false
+12345@1234.com---------true
+12345@1234---------false
 program:  repeatrange(<any>,11,14)
 automaton:  (.){11,14}
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  repeatrange(<any>,1,14)
+automaton:  (.){1,14}
+matching indices:  0
+matching examples:
+12345@1234.com---------true
+program:  repeatrange(<any>,9,14)
+automaton:  (.){9,14}
+matching indices:  0
+matching examples:
+12345@1234.com---------true
+program:  repeatrange(<any>,8,14)
+automaton:  (.){8,14}
+matching indices:  0
+matching examples:
+12345@1234.com---------true
+program:  repeatrange(<any>,7,14)
+automaton:  (.){7,14}
+matching indices:  0
+matching examples:
+12345@1234.com---------true
+program:  repeatrange(<any>,2,14)
+automaton:  (.){2,14}
+matching indices:  0
+matching examples:
+12345@1234.com---------true
+program:  repeatrange(<any>,6,14)
+automaton:  (.){6,14}
+matching indices:  0
+matching examples:
+12345@1234.com---------true
+program:  repeatrange(<any>,5,14)
+automaton:  (.){5,14}
+matching indices:  0
+matching examples:
+12345@1234.com---------true
+program:  repeatrange(<any>,4,14)
+automaton:  (.){4,14}
+matching indices:  0
+matching examples:
+12345@1234.com---------true
+program:  repeatrange(<any>,3,14)
+automaton:  (.){3,14}
+matching indices:  0
+matching examples:
+12345@1234.com---------true
+program:  repeatatleast(<any>,1)
+automaton:  (.){1,}
+matching indices:  0
+matching examples:
+12345@1234.com---------true
+program:  repeatatleast(<any>,2)
+automaton:  (.){2,}
+matching indices:  0
+matching examples:
+12345@1234.com---------true
+program:  repeatatleast(<any>,3)
+automaton:  (.){3,}
+matching indices:  0
+matching examples:
+12345@1234.com---------true
+program:  repeatatleast(<any>,4)
+automaton:  (.){4,}
+matching indices:  0
+matching examples:
+12345@1234.com---------true
+program:  repeatatleast(<any>,5)
+automaton:  (.){5,}
+matching indices:  0
+matching examples:
+12345@1234.com---------true
+program:  repeatatleast(<any>,6)
+automaton:  (.){6,}
+matching indices:  0
+matching examples:
+12345@1234.com---------true
+program:  repeatatleast(<any>,7)
+automaton:  (.){7,}
+matching indices:  0
+matching examples:
+12345@1234.com---------true
+program:  repeatatleast(<any>,8)
+automaton:  (.){8,}
+matching indices:  0
+matching examples:
+12345@1234.com---------true
+program:  repeatatleast(<any>,9)
+automaton:  (.){9,}
+matching indices:  0
+matching examples:
+12345@1234.com---------true
+program:  repeatatleast(<any>,10)
+automaton:  (.){10,}
+matching indices:  0
+matching examples:
+12345@1234.com---------true
+program:  repeatatleast(<any>,11)
+automaton:  (.){11,}
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  repeatatleast(<any>,12)
+automaton:  (.){12,}
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  repeatatleast(<any>,13)
+automaton:  (.){13,}
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  repeatatleast(<any>,14)
+automaton:  (.){14,}
+matching indices:  0 1 2 3
+matching examples:
+12345@1234.com---------true
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  startwith(concat(repeatatleast(<any>,5),<@>))
+automaton:  (((.){5,})([@])).*
+matching indices:  0 1
+matching examples:
+12345@1234.com---------true
+123451234.com---------false
+program:  endwith(concat(repeatatleast(<any>,5),<@>))
+automaton:  .*(((.){5,})([@]))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  contain(concat(repeatatleast(<any>,5),<@>))
+automaton:  .*(((.){5,})([@])).*
+matching indices:  0 1
+matching examples:
+12345@1234.com---------true
+123451234.com---------false
+program:  optional(concat(repeatatleast(<any>,5),<@>))
+automaton:  (((.){5,})([@]))?
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  not(concat(repeatatleast(<any>,5),<@>))
+automaton:  ~(((.){5,})([@]))
+matching indices:  0
+matching examples:
+12345@1234.com---------true
+program:  star(concat(repeatatleast(<any>,5),<@>))
+automaton:  (((.){5,})([@]))*
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeat(concat(repeatatleast(<any>,5),<@>),2)
+automaton:  (((.){5,})([@])){2}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(concat(repeatatleast(<any>,5),<@>),1)
+automaton:  (((.){5,})([@])){1,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(concat(repeatatleast(<any>,5),<@>),2)
+automaton:  (((.){5,})([@])){2,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  startwith(concat(<@>,repeatatleast(<any>,4)))
+automaton:  (([@])((.){4,})).*
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  endwith(concat(<@>,repeatatleast(<any>,4)))
+automaton:  .*(([@])((.){4,}))
+matching indices:  0 1
+matching examples:
+12345@1234.com---------true
+123451234.com---------false
+program:  contain(concat(<@>,repeatatleast(<any>,4)))
+automaton:  .*(([@])((.){4,})).*
+matching indices:  0 1
+matching examples:
+12345@1234.com---------true
+123451234.com---------false
+program:  optional(concat(<@>,repeatatleast(<any>,4)))
+automaton:  (([@])((.){4,}))?
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  not(concat(<@>,repeatatleast(<any>,4)))
+automaton:  ~(([@])((.){4,}))
+matching indices:  0
+matching examples:
+12345@1234.com---------true
+program:  star(concat(<@>,repeatatleast(<any>,4)))
+automaton:  (([@])((.){4,}))*
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeat(concat(<@>,repeatatleast(<any>,4)),2)
+automaton:  (([@])((.){4,})){2}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(concat(<@>,repeatatleast(<any>,4)),1)
+automaton:  (([@])((.){4,})){1,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(concat(<@>,repeatatleast(<any>,4)),2)
+automaton:  (([@])((.){4,})){2,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  startwith(<.>)
+automaton:  ([\.]).*
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  endwith(<.>)
+automaton:  .*([\.])
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  contain(<.>)
+automaton:  .*([\.]).*
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  optional(<.>)
+automaton:  ([\.])?
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  not(<.>)
+automaton:  ~([\.])
+matching indices:  0
+matching examples:
+12345@1234.com---------true
+program:  star(<.>)
+automaton:  ([\.])*
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeat(<.>,14)
+automaton:  ([\.]){14}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<.>,1)
+automaton:  ([\.]){1,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<.>,2)
+automaton:  ([\.]){2,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<.>,3)
+automaton:  ([\.]){3,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<.>,4)
+automaton:  ([\.]){4,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<.>,5)
+automaton:  ([\.]){5,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<.>,6)
+automaton:  ([\.]){6,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<.>,7)
+automaton:  ([\.]){7,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<.>,8)
+automaton:  ([\.]){8,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<.>,9)
+automaton:  ([\.]){9,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<.>,10)
+automaton:  ([\.]){10,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<.>,11)
+automaton:  ([\.]){11,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<.>,12)
+automaton:  ([\.]){12,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<.>,13)
+automaton:  ([\.]){13,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<.>,14)
+automaton:  ([\.]){14,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  startwith(<c>)
+automaton:  ([c]).*
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  endwith(<c>)
+automaton:  .*([c])
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  contain(<c>)
+automaton:  .*([c]).*
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  optional(<c>)
+automaton:  ([c])?
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  not(<c>)
+automaton:  ~([c])
+matching indices:  0
+matching examples:
+12345@1234.com---------true
+program:  star(<c>)
+automaton:  ([c])*
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeat(<c>,14)
+automaton:  ([c]){14}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<c>,1)
+automaton:  ([c]){1,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<c>,2)
+automaton:  ([c]){2,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<c>,3)
+automaton:  ([c]){3,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<c>,4)
+automaton:  ([c]){4,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<c>,5)
+automaton:  ([c]){5,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<c>,6)
+automaton:  ([c]){6,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<c>,7)
+automaton:  ([c]){7,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<c>,8)
+automaton:  ([c]){8,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<c>,9)
+automaton:  ([c]){9,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<c>,10)
+automaton:  ([c]){10,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<c>,11)
+automaton:  ([c]){11,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<c>,12)
+automaton:  ([c]){12,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<c>,13)
+automaton:  ([c]){13,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<c>,14)
+automaton:  ([c]){14,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  startwith(<o>)
+automaton:  ([o]).*
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  endwith(<o>)
+automaton:  .*([o])
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  contain(<o>)
+automaton:  .*([o]).*
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  optional(<o>)
+automaton:  ([o])?
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  not(<o>)
+automaton:  ~([o])
+matching indices:  0
+matching examples:
+12345@1234.com---------true
+program:  star(<o>)
+automaton:  ([o])*
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeat(<o>,14)
+automaton:  ([o]){14}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<o>,1)
+automaton:  ([o]){1,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<o>,2)
+automaton:  ([o]){2,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<o>,3)
+automaton:  ([o]){3,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<o>,4)
+automaton:  ([o]){4,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<o>,5)
+automaton:  ([o]){5,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<o>,6)
+automaton:  ([o]){6,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<o>,7)
+automaton:  ([o]){7,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<o>,8)
+automaton:  ([o]){8,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<o>,9)
+automaton:  ([o]){9,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<o>,10)
+automaton:  ([o]){10,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<o>,11)
+automaton:  ([o]){11,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<o>,12)
+automaton:  ([o]){12,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<o>,13)
+automaton:  ([o]){13,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<o>,14)
+automaton:  ([o]){14,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  startwith(<m>)
+automaton:  ([m]).*
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  endwith(<m>)
+automaton:  .*([m])
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  contain(<m>)
+automaton:  .*([m]).*
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  optional(<m>)
+automaton:  ([m])?
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  not(<m>)
+automaton:  ~([m])
+matching indices:  0
+matching examples:
+12345@1234.com---------true
+program:  star(<m>)
+automaton:  ([m])*
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeat(<m>,14)
+automaton:  ([m]){14}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<m>,1)
+automaton:  ([m]){1,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<m>,2)
+automaton:  ([m]){2,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<m>,3)
+automaton:  ([m]){3,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<m>,4)
+automaton:  ([m]){4,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<m>,5)
+automaton:  ([m]){5,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<m>,6)
+automaton:  ([m]){6,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<m>,7)
+automaton:  ([m]){7,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<m>,8)
+automaton:  ([m]){8,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<m>,9)
+automaton:  ([m]){9,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<m>,10)
+automaton:  ([m]){10,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<m>,11)
+automaton:  ([m]){11,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<m>,12)
+automaton:  ([m]){12,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<m>,13)
+automaton:  ([m]){13,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<m>,14)
+automaton:  ([m]){14,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  startwith(concat(repeatatleast(<any>,4),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  (((.){4,})(([\.])(([c])(([o])([m]))))).*
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  endwith(concat(repeatatleast(<any>,4),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  .*(((.){4,})(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  contain(concat(repeatatleast(<any>,4),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  .*(((.){4,})(([\.])(([c])(([o])([m]))))).*
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  optional(concat(repeatatleast(<any>,4),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  (((.){4,})(([\.])(([c])(([o])([m])))))?
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  not(concat(repeatatleast(<any>,4),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ~(((.){4,})(([\.])(([c])(([o])([m])))))
+matching indices:  1 3
+matching examples:
+123451234.com---------false
+12345@123.com---------false
+program:  star(concat(repeatatleast(<any>,4),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  (((.){4,})(([\.])(([c])(([o])([m])))))*
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  repeatatleast(concat(repeatatleast(<any>,4),concat(<.>,concat(<c>,concat(<o>,<m>)))),1)
+automaton:  (((.){4,})(([\.])(([c])(([o])([m]))))){1,}
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(<@>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})(([@])(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(<c>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})(([c])(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(<num>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})(([0-9])(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(<m>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})(([m])(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(<any>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((.)(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(<.>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})(([\.])(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(<num1-9>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})(([1-9])(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(<o>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})(([o])(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(<1>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})(([1])(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(<alphanum>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})(([a-zA-Z0-9])(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(<2>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})(([2])(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(<3>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})(([3])(([\.])(([c])(([o])([m])))))
+matching indices:  1 2
+matching examples:
+123451234.com---------false
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(<4>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})(([4])(([\.])(([c])(([o])([m])))))
+matching indices:  0 2 3
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(<5>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})(([5])(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(<low>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})(([a-z])(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  startwith(<1>)
+automaton:  ([1]).*
+matching indices:  0
+matching examples:
+12345@1234.com---------true
+program:  endwith(<1>)
+automaton:  .*([1])
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  contain(<1>)
+automaton:  .*([1]).*
+matching indices:  0
+matching examples:
+12345@1234.com---------true
+program:  optional(<1>)
+automaton:  ([1])?
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  not(<1>)
+automaton:  ~([1])
+matching indices:  0
+matching examples:
+12345@1234.com---------true
+program:  star(<1>)
+automaton:  ([1])*
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeat(<1>,14)
+automaton:  ([1]){14}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<1>,1)
+automaton:  ([1]){1,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<1>,2)
+automaton:  ([1]){2,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<1>,3)
+automaton:  ([1]){3,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<1>,4)
+automaton:  ([1]){4,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<1>,5)
+automaton:  ([1]){5,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<1>,6)
+automaton:  ([1]){6,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<1>,7)
+automaton:  ([1]){7,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<1>,8)
+automaton:  ([1]){8,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<1>,9)
+automaton:  ([1]){9,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<1>,10)
+automaton:  ([1]){10,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<1>,11)
+automaton:  ([1]){11,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<1>,12)
+automaton:  ([1]){12,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<1>,13)
+automaton:  ([1]){13,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<1>,14)
+automaton:  ([1]){14,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  startwith(<2>)
+automaton:  ([2]).*
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  endwith(<2>)
+automaton:  .*([2])
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  contain(<2>)
+automaton:  .*([2]).*
+matching indices:  0
+matching examples:
+12345@1234.com---------true
+program:  optional(<2>)
+automaton:  ([2])?
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  not(<2>)
+automaton:  ~([2])
+matching indices:  0
+matching examples:
+12345@1234.com---------true
+program:  star(<2>)
+automaton:  ([2])*
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeat(<2>,14)
+automaton:  ([2]){14}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<2>,1)
+automaton:  ([2]){1,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<2>,2)
+automaton:  ([2]){2,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<2>,3)
+automaton:  ([2]){3,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<2>,4)
+automaton:  ([2]){4,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<2>,5)
+automaton:  ([2]){5,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<2>,6)
+automaton:  ([2]){6,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<2>,7)
+automaton:  ([2]){7,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<2>,8)
+automaton:  ([2]){8,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<2>,9)
+automaton:  ([2]){9,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<2>,10)
+automaton:  ([2]){10,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<2>,11)
+automaton:  ([2]){11,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<2>,12)
+automaton:  ([2]){12,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<2>,13)
+automaton:  ([2]){13,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<2>,14)
+automaton:  ([2]){14,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  startwith(<3>)
+automaton:  ([3]).*
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  endwith(<3>)
+automaton:  .*([3])
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  contain(<3>)
+automaton:  .*([3]).*
+matching indices:  0
+matching examples:
+12345@1234.com---------true
+program:  optional(<3>)
+automaton:  ([3])?
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  not(<3>)
+automaton:  ~([3])
+matching indices:  0
+matching examples:
+12345@1234.com---------true
+program:  star(<3>)
+automaton:  ([3])*
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeat(<3>,14)
+automaton:  ([3]){14}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<3>,1)
+automaton:  ([3]){1,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<3>,2)
+automaton:  ([3]){2,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<3>,3)
+automaton:  ([3]){3,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<3>,4)
+automaton:  ([3]){4,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<3>,5)
+automaton:  ([3]){5,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<3>,6)
+automaton:  ([3]){6,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<3>,7)
+automaton:  ([3]){7,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<3>,8)
+automaton:  ([3]){8,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<3>,9)
+automaton:  ([3]){9,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<3>,10)
+automaton:  ([3]){10,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<3>,11)
+automaton:  ([3]){11,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<3>,12)
+automaton:  ([3]){12,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<3>,13)
+automaton:  ([3]){13,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<3>,14)
+automaton:  ([3]){14,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  startwith(<4>)
+automaton:  ([4]).*
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  endwith(<4>)
+automaton:  .*([4])
+matching indices:  1 3
+matching examples:
+123451234.com---------false
+12345@123.com---------false
+program:  contain(<4>)
+automaton:  .*([4]).*
+matching indices:  0
+matching examples:
+12345@1234.com---------true
+program:  optional(<4>)
+automaton:  ([4])?
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  not(<4>)
+automaton:  ~([4])
+matching indices:  0
+matching examples:
+12345@1234.com---------true
+program:  star(<4>)
+automaton:  ([4])*
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeat(<4>,14)
+automaton:  ([4]){14}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<4>,1)
+automaton:  ([4]){1,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<4>,2)
+automaton:  ([4]){2,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<4>,3)
+automaton:  ([4]){3,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<4>,4)
+automaton:  ([4]){4,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<4>,5)
+automaton:  ([4]){5,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<4>,6)
+automaton:  ([4]){6,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<4>,7)
+automaton:  ([4]){7,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<4>,8)
+automaton:  ([4]){8,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<4>,9)
+automaton:  ([4]){9,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<4>,10)
+automaton:  ([4]){10,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<4>,11)
+automaton:  ([4]){11,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<4>,12)
+automaton:  ([4]){12,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<4>,13)
+automaton:  ([4]){13,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<4>,14)
+automaton:  ([4]){14,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  startwith(concat(concat(<1>,concat(<2>,concat(<3>,<4>))),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((([1])(([2])(([3])([4]))))(([\.])(([c])(([o])([m]))))).*
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  endwith(concat(concat(<1>,concat(<2>,concat(<3>,<4>))),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  .*((([1])(([2])(([3])([4]))))(([\.])(([c])(([o])([m])))))
+matching indices:  0 2 3
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+12345@123.com---------false
+program:  contain(concat(concat(<1>,concat(<2>,concat(<3>,<4>))),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  .*((([1])(([2])(([3])([4]))))(([\.])(([c])(([o])([m]))))).*
+matching indices:  0 2 3
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+12345@123.com---------false
+program:  optional(concat(concat(<1>,concat(<2>,concat(<3>,<4>))),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((([1])(([2])(([3])([4]))))(([\.])(([c])(([o])([m])))))?
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  not(concat(concat(<1>,concat(<2>,concat(<3>,<4>))),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ~((([1])(([2])(([3])([4]))))(([\.])(([c])(([o])([m])))))
+matching indices:  0
+matching examples:
+12345@1234.com---------true
+program:  star(concat(concat(<1>,concat(<2>,concat(<3>,<4>))),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((([1])(([2])(([3])([4]))))(([\.])(([c])(([o])([m])))))*
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(concat(concat(<1>,concat(<2>,concat(<3>,<4>))),concat(<.>,concat(<c>,concat(<o>,<m>)))),1)
+automaton:  ((([1])(([2])(([3])([4]))))(([\.])(([c])(([o])([m]))))){1,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(concat(<1>,concat(<2>,concat(<3>,<4>))),concat(<@>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  (([1])(([2])(([3])([4]))))(([@])(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(concat(<1>,concat(<2>,concat(<3>,<4>))),concat(<c>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  (([1])(([2])(([3])([4]))))(([c])(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(concat(<1>,concat(<2>,concat(<3>,<4>))),concat(<num>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  (([1])(([2])(([3])([4]))))(([0-9])(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(concat(<1>,concat(<2>,concat(<3>,<4>))),concat(<m>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  (([1])(([2])(([3])([4]))))(([m])(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(concat(<1>,concat(<2>,concat(<3>,<4>))),concat(<any>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  (([1])(([2])(([3])([4]))))((.)(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(concat(<1>,concat(<2>,concat(<3>,<4>))),concat(<.>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  (([1])(([2])(([3])([4]))))(([\.])(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(concat(<1>,concat(<2>,concat(<3>,<4>))),concat(<num1-9>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  (([1])(([2])(([3])([4]))))(([1-9])(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(concat(<1>,concat(<2>,concat(<3>,<4>))),concat(<o>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  (([1])(([2])(([3])([4]))))(([o])(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(concat(<1>,concat(<2>,concat(<3>,<4>))),concat(<1>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  (([1])(([2])(([3])([4]))))(([1])(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(concat(<1>,concat(<2>,concat(<3>,<4>))),concat(<alphanum>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  (([1])(([2])(([3])([4]))))(([a-zA-Z0-9])(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(concat(<1>,concat(<2>,concat(<3>,<4>))),concat(<2>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  (([1])(([2])(([3])([4]))))(([2])(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(concat(<1>,concat(<2>,concat(<3>,<4>))),concat(<3>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  (([1])(([2])(([3])([4]))))(([3])(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(concat(<1>,concat(<2>,concat(<3>,<4>))),concat(<4>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  (([1])(([2])(([3])([4]))))(([4])(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(concat(<1>,concat(<2>,concat(<3>,<4>))),concat(<5>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  (([1])(([2])(([3])([4]))))(([5])(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(concat(<1>,concat(<2>,concat(<3>,<4>))),concat(<low>,concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  (([1])(([2])(([3])([4]))))(([a-z])(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  startwith(<5>)
+automaton:  ([5]).*
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  endwith(<5>)
+automaton:  .*([5])
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  contain(<5>)
+automaton:  .*([5]).*
+matching indices:  0
+matching examples:
+12345@1234.com---------true
+program:  optional(<5>)
+automaton:  ([5])?
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  not(<5>)
+automaton:  ~([5])
+matching indices:  0
+matching examples:
+12345@1234.com---------true
+program:  star(<5>)
+automaton:  ([5])*
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeat(<5>,14)
+automaton:  ([5]){14}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<5>,1)
+automaton:  ([5]){1,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<5>,2)
+automaton:  ([5]){2,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<5>,3)
+automaton:  ([5]){3,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<5>,4)
+automaton:  ([5]){4,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<5>,5)
+automaton:  ([5]){5,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<5>,6)
+automaton:  ([5]){6,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<5>,7)
+automaton:  ([5]){7,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<5>,8)
+automaton:  ([5]){8,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<5>,9)
+automaton:  ([5]){9,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<5>,10)
+automaton:  ([5]){10,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<5>,11)
+automaton:  ([5]){11,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<5>,12)
+automaton:  ([5]){12,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<5>,13)
+automaton:  ([5]){13,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(<5>,14)
+automaton:  ([5]){14,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  startwith(concat(concat(<1>,concat(<2>,concat(<3>,concat(<4>,<5>)))),<@>))
+automaton:  ((([1])(([2])(([3])(([4])([5])))))([@])).*
+matching indices:  0 1
+matching examples:
+12345@1234.com---------true
+123451234.com---------false
+program:  endwith(concat(concat(<1>,concat(<2>,concat(<3>,concat(<4>,<5>)))),<@>))
+automaton:  .*((([1])(([2])(([3])(([4])([5])))))([@]))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  contain(concat(concat(<1>,concat(<2>,concat(<3>,concat(<4>,<5>)))),<@>))
+automaton:  .*((([1])(([2])(([3])(([4])([5])))))([@])).*
+matching indices:  0 1
+matching examples:
+12345@1234.com---------true
+123451234.com---------false
+program:  optional(concat(concat(<1>,concat(<2>,concat(<3>,concat(<4>,<5>)))),<@>))
+automaton:  ((([1])(([2])(([3])(([4])([5])))))([@]))?
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  not(concat(concat(<1>,concat(<2>,concat(<3>,concat(<4>,<5>)))),<@>))
+automaton:  ~((([1])(([2])(([3])(([4])([5])))))([@]))
+matching indices:  0
+matching examples:
+12345@1234.com---------true
+program:  star(concat(concat(<1>,concat(<2>,concat(<3>,concat(<4>,<5>)))),<@>))
+automaton:  ((([1])(([2])(([3])(([4])([5])))))([@]))*
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(concat(concat(<1>,concat(<2>,concat(<3>,concat(<4>,<5>)))),<@>),1)
+automaton:  ((([1])(([2])(([3])(([4])([5])))))([@])){1,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(concat(concat(<1>,concat(<2>,concat(<3>,concat(<4>,<5>)))),<@>),2)
+automaton:  ((([1])(([2])(([3])(([4])([5])))))([@])){2,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  startwith(concat(<@>,concat(<1>,concat(<2>,concat(<3>,<4>)))))
+automaton:  (([@])(([1])(([2])(([3])([4]))))).*
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  endwith(concat(<@>,concat(<1>,concat(<2>,concat(<3>,<4>)))))
+automaton:  .*(([@])(([1])(([2])(([3])([4])))))
+matching indices:  1 3
+matching examples:
+123451234.com---------false
+12345@123.com---------false
+program:  contain(concat(<@>,concat(<1>,concat(<2>,concat(<3>,<4>)))))
+automaton:  .*(([@])(([1])(([2])(([3])([4]))))).*
+matching indices:  0 1 3
+matching examples:
+12345@1234.com---------true
+123451234.com---------false
+12345@123.com---------false
+program:  optional(concat(<@>,concat(<1>,concat(<2>,concat(<3>,<4>)))))
+automaton:  (([@])(([1])(([2])(([3])([4])))))?
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  not(concat(<@>,concat(<1>,concat(<2>,concat(<3>,<4>)))))
+automaton:  ~(([@])(([1])(([2])(([3])([4])))))
+matching indices:  0
+matching examples:
+12345@1234.com---------true
+program:  star(concat(<@>,concat(<1>,concat(<2>,concat(<3>,<4>)))))
+automaton:  (([@])(([1])(([2])(([3])([4])))))*
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(concat(<@>,concat(<1>,concat(<2>,concat(<3>,<4>)))),1)
+automaton:  (([@])(([1])(([2])(([3])([4]))))){1,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  repeatatleast(concat(<@>,concat(<1>,concat(<2>,concat(<3>,<4>)))),2)
+automaton:  (([@])(([1])(([2])(([3])([4]))))){2,}
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(startwith(<@>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([@]).*)(([\.])(([c])(([o])([m])))))
 matching indices:  0 1 2
 matching examples:
-2s8=-@g9=1.com---------true
-g9=1.com---------false
-2s8=-@---------false
-program:  repeatrange(<any>,10,14)
-automaton:  (.){10,14}
+12345@1234.com---------true
+123451234.com---------false
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(startwith(<c>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([c]).*)(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(startwith(<num>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([0-9]).*)(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(startwith(<m>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([m]).*)(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(startwith(<any>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})(((.).*)(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(startwith(<.>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([\.]).*)(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(startwith(<num1-9>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([1-9]).*)(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(startwith(<o>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([o]).*)(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(startwith(<1>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([1]).*)(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(startwith(<alphanum>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([a-zA-Z0-9]).*)(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(startwith(<2>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([2]).*)(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(startwith(<3>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([3]).*)(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(startwith(<4>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([4]).*)(([\.])(([c])(([o])([m])))))
+matching indices:  0 2 3
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(startwith(<5>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([5]).*)(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(startwith(<low>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([a-z]).*)(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(endwith(<@>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((.*([@]))(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(endwith(<c>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((.*([c]))(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(endwith(<num>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((.*([0-9]))(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(endwith(<m>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((.*([m]))(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(endwith(<any>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((.*(.))(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(endwith(<.>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((.*([\.]))(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(endwith(<num1-9>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((.*([1-9]))(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(endwith(<o>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((.*([o]))(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(endwith(<1>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((.*([1]))(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(endwith(<alphanum>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((.*([a-zA-Z0-9]))(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(endwith(<2>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((.*([2]))(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(endwith(<3>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((.*([3]))(([\.])(([c])(([o])([m])))))
+matching indices:  1 2
+matching examples:
+123451234.com---------false
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(endwith(<4>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((.*([4]))(([\.])(([c])(([o])([m])))))
+matching indices:  0 2 3
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(endwith(<5>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((.*([5]))(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(endwith(<low>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((.*([a-z]))(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(contain(<@>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((.*([@]).*)(([\.])(([c])(([o])([m])))))
 matching indices:  0 1 2
 matching examples:
-2s8=-@g9=1.com---------true
-g9=1.com---------false
-2s8=-@---------false
+12345@1234.com---------true
+123451234.com---------false
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(contain(<c>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((.*([c]).*)(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(contain(<num>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((.*([0-9]).*)(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(contain(<m>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((.*([m]).*)(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(contain(<any>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((.*(.).*)(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(contain(<.>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((.*([\.]).*)(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(contain(<num1-9>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((.*([1-9]).*)(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(contain(<o>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((.*([o]).*)(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(contain(<1>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((.*([1]).*)(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(contain(<alphanum>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((.*([a-zA-Z0-9]).*)(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(contain(<2>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((.*([2]).*)(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(contain(<3>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((.*([3]).*)(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(contain(<4>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((.*([4]).*)(([\.])(([c])(([o])([m])))))
+matching indices:  0 2 3
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(contain(<5>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((.*([5]).*)(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(contain(<low>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((.*([a-z]).*)(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(not(<@>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((~([@]))(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(not(<c>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((~([c]))(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(not(<num>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((~([0-9]))(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(not(<m>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((~([m]))(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(not(<any>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((~(.))(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(not(<.>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((~([\.]))(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(not(<num1-9>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((~([1-9]))(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(not(<o>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((~([o]))(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(not(<1>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((~([1]))(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(not(<alphanum>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((~([a-zA-Z0-9]))(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(not(<2>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((~([2]))(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(not(<3>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((~([3]))(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(not(<4>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((~([4]))(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(not(<5>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((~([5]))(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(not(<low>),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((~([a-z]))(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<@>,2),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([@]){2})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<@>,3),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([@]){3})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<@>,4),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([@]){4})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<@>,5),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([@]){5})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<@>,6),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([@]){6})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<c>,2),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([c]){2})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<c>,3),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([c]){3})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<c>,4),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([c]){4})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<c>,5),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([c]){5})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<c>,6),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([c]){6})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<num>,2),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([0-9]){2})(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<num>,3),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([0-9]){3})(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<num>,4),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([0-9]){4})(([\.])(([c])(([o])([m])))))
+matching indices:  0 2 3
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<num>,5),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([0-9]){5})(([\.])(([c])(([o])([m])))))
+matching indices:  2 3
+matching examples:
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<num>,6),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([0-9]){6})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<m>,2),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([m]){2})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<m>,3),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([m]){3})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<m>,4),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([m]){4})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<m>,5),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([m]){5})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<m>,6),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([m]){6})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<any>,2),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})(((.){2})(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<any>,3),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})(((.){3})(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<any>,4),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})(((.){4})(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<any>,5),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})(((.){5})(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<any>,6),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})(((.){6})(([\.])(([c])(([o])([m])))))
+matching indices:  0 1 2 3
+matching examples:
+12345@1234.com---------true
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<.>,2),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([\.]){2})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<.>,3),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([\.]){3})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<.>,4),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([\.]){4})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<.>,5),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([\.]){5})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<.>,6),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([\.]){6})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<num1-9>,2),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([1-9]){2})(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<num1-9>,3),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([1-9]){3})(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<num1-9>,4),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([1-9]){4})(([\.])(([c])(([o])([m])))))
+matching indices:  0 2 3
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<num1-9>,5),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([1-9]){5})(([\.])(([c])(([o])([m])))))
+matching indices:  2 3
+matching examples:
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<num1-9>,6),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([1-9]){6})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<o>,2),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([o]){2})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<o>,3),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([o]){3})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<o>,4),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([o]){4})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<o>,5),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([o]){5})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<o>,6),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([o]){6})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<1>,2),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([1]){2})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<1>,3),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([1]){3})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<1>,4),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([1]){4})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<1>,5),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([1]){5})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<1>,6),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([1]){6})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<alphanum>,2),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([a-zA-Z0-9]){2})(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<alphanum>,3),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([a-zA-Z0-9]){3})(([\.])(([c])(([o])([m])))))
+matching indices:  0 2
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<alphanum>,4),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([a-zA-Z0-9]){4})(([\.])(([c])(([o])([m])))))
+matching indices:  0 2 3
+matching examples:
+12345@1234.com---------true
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<alphanum>,5),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([a-zA-Z0-9]){5})(([\.])(([c])(([o])([m])))))
+matching indices:  2 3
+matching examples:
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<alphanum>,6),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([a-zA-Z0-9]){6})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<2>,2),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([2]){2})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<2>,3),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([2]){3})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<2>,4),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([2]){4})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<2>,5),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([2]){5})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<2>,6),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([2]){6})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<3>,2),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([3]){2})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<3>,3),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([3]){3})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<3>,4),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([3]){4})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<3>,5),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([3]){5})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<3>,6),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([3]){6})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<4>,2),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([4]){2})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<4>,3),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([4]){3})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<4>,4),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([4]){4})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<4>,5),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([4]){5})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<4>,6),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([4]){6})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<5>,2),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([5]){2})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<5>,3),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([5]){3})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<5>,4),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([5]){4})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<5>,5),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([5]){5})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<5>,6),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([5]){6})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<low>,2),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([a-z]){2})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<low>,3),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([a-z]){3})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<low>,4),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([a-z]){4})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<low>,5),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([a-z]){5})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeat(<low>,6),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})((([a-z]){6})(([\.])(([c])(([o])([m])))))
+matching indices:  1 2 3
+matching examples:
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeatrange(<any>,6,7),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})(((.){6,7})(([\.])(([c])(([o])([m])))))
+matching indices:  0 1 2 3
+matching examples:
+12345@1234.com---------true
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false
+program:  concat(repeatatleast(<any>,4),concat(repeatrange(<any>,6,8),concat(<.>,concat(<c>,concat(<o>,<m>)))))
+automaton:  ((.){4,})(((.){6,8})(([\.])(([c])(([o])([m])))))
+matching indices:  0 1 2 3
+matching examples:
+12345@1234.com---------true
+123451234.com---------false
+12345@1234---------false
+12345@123.com---------false

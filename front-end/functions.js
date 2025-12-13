@@ -116,7 +116,8 @@ var cur_task = "0";
 // Function to enable temporal ordering mode
 function enableTemporalOrdering() {
     if (temporalSelectionMode) {
-        alert("Already in temporal ordering mode. Click on two highlighted spans.");
+        // If already in temporal mode, cancel it
+        cancelTemporalOrdering();
         return;
     }
     
@@ -395,6 +396,13 @@ var isComplete = false;
 var isTimeout = -1;  // -1: not known; 0: timeout; 1: complete
 
 function synthesize() {
+    // Get the timeout value from the input
+    var timeoutValue = parseInt($('#timeout-input').val());
+    if (isNaN(timeoutValue) || timeoutValue < 10) {
+        alert("Please enter a valid timeout value (minimum 10 seconds)");
+        return;
+    }
+    
     // reset the signals
     percent = 0;
     isComplete = false;
@@ -622,8 +630,9 @@ function synthesize() {
     
     console.log("Examples:", examples);
     console.log("Regexes:", regexes);
-    
-    socket.send("Synthesize Regexes: " + examples + "\n" + regexes);
+    console.log("Timeout:", timeoutValue);
+
+    socket.send("Synthesize Regexes: " + examples + "\n" + regexes + "\n" + timeoutValue);
 
     // set the synthesis progress bar
     percent = 0;

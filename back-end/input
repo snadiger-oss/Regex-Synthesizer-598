@@ -1,7 +1,9 @@
-"2s8=-@g9=1.com",+
-"g9=1.com",-
-"2s8=-@",-
-"2s8=-#g9=1.com",-
+"12345@1234.com",+
+"123451234.com",-
+"12345@1234",-
+"12345@123.com",-
+"aDSADSADAs@asbdjadbshadbhadsba.com",+
+"asdasdasdasdasdasdasdasd",-
 
 repeatatleast(or(<A>,or(<B>,<C>)),1)
-READY-1
+READY-2
